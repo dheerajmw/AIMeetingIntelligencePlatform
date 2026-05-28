@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Enterprise Settings | MeetIQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c0c1ff",
+                    "on-secondary-container": "#5c647a",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-variant": "#d3e4fe",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "outline": "#767586",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#494bd6",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "primary-fixed": "#e1e0ff",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "secondary": "#565e74",
+                    "surface": "#f8f9ff",
+                    "surface-container": "#e5eeff",
+                    "background": "#f8f9ff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#464554",
+                    "primary-container": "#6063ee",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#131b2e",
+                    "tertiary-fixed": "#ffdcc5",
+                    "on-surface": "#0b1c30",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "primary": "#4648d4",
+                    "outline-variant": "#c7c4d7",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#dae2fd",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "inverse-primary": "#c0c1ff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#07006c",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-tertiary-container": "#fffbff",
+                    "secondary-container": "#dae2fd",
+                    "tertiary": "#904900",
+                    "on-primary-container": "#fffbff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-container": "#b55d00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "margin-desktop": "32px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "metadata": ["Inter"],
+                    "display": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "caption": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "metadata": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                    "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-20 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant transition-colors duration-200 ease-in-out">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors">menu</button>
+<h1 class="font-headline-md-mobile text-headline-md-mobile font-bold text-on-surface">MeetIQ</h1>
+</div>
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors">notifications</button>
+</header>
+<main class="pt-20 px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto">
+<!-- Tab Navigation (Bento Header) -->
+<div class="mb-gutter overflow-x-auto scrollbar-hide">
+<nav class="flex gap-2 p-1 bg-surface-container-low rounded-xl border border-outline-variant inline-flex min-w-max">
+<button class="px-md py-sm rounded-lg font-metadata text-metadata transition-all bg-primary-container text-on-primary-container" id="tab-workspace" onclick="switchTab('workspace')">Workspace</button>
+<button class="px-md py-sm rounded-lg font-metadata text-metadata transition-all text-on-surface-variant hover:bg-surface-container-high" id="tab-usage" onclick="switchTab('usage')">Usage</button>
+<button class="px-md py-sm rounded-lg font-metadata text-metadata transition-all text-on-surface-variant hover:bg-surface-container-high" id="tab-roles" onclick="switchTab('roles')">Audit Log</button>
+<button class="px-md py-sm rounded-lg font-metadata text-metadata transition-all text-on-surface-variant hover:bg-surface-container-high" id="tab-security" onclick="switchTab('security')">Security</button>
+<button class="px-md py-sm rounded-lg font-metadata text-metadata transition-all text-on-surface-variant hover:bg-surface-container-high" id="tab-retention" onclick="switchTab('retention')">Data Retention</button>
+</nav>
+</div>
+<!-- Content Area: Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-xl">
+<!-- Section: Workspace (Large Card) -->
+<section class="md:col-span-8 space-y-gutter" id="content-workspace">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<h2 class="font-headline-md text-headline-md mb-md">Workspace Identity</h2>
+<div class="space-y-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between p-md bg-surface-container-low rounded-lg border border-outline-variant/30">
+<div>
+<p class="font-metadata text-metadata text-outline">Workspace Slug</p>
+<p class="font-body-md text-body-md font-medium">enterprise-intelligence-hq</p>
+</div>
+<button class="mt-sm md:mt-0 px-md py-xs border border-outline-variant rounded-lg font-metadata text-metadata hover:bg-surface-container-high transition-colors">Change Slug</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="p-md border border-outline-variant/50 rounded-lg">
+<p class="font-metadata text-metadata text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">public</span> Data Region
+                                </p>
+<p class="font-body-md text-body-md font-semibold">EU (Frankfurt) - eu-central-1</p>
+</div>
+<div class="p-md border border-outline-variant/50 rounded-lg">
+<p class="font-metadata text-metadata text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">history</span> Retention Policy
+                                </p>
+<p class="font-body-md text-body-md font-semibold">90 Days</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Role Management (Table) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md">Role Management</h2>
+<button class="bg-primary text-on-primary px-md py-sm rounded-lg font-metadata text-metadata flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span> Add Member
+                        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-lg py-md font-metadata text-metadata text-outline">User Email</th>
+<th class="px-lg py-md font-metadata text-metadata text-outline">Role</th>
+<th class="px-lg py-md font-metadata text-metadata text-outline text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md font-body-sm text-body-sm">sarah.j@enterprise.com</td>
+<td class="px-lg py-md">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-sm py-1 rounded-full text-caption font-medium">Owner</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">edit</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md font-body-sm text-body-sm">tech-admin@enterprise.com</td>
+<td class="px-lg py-md">
+<span class="bg-secondary-container text-on-secondary-container px-sm py-1 rounded-full text-caption font-medium">Admin</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">edit</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md font-body-sm text-body-sm">analyst.one@enterprise.com</td>
+<td class="px-lg py-md">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-sm py-1 rounded-full text-caption font-medium">Member</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">edit</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md font-body-sm text-body-sm">external.auditor@consultancy.com</td>
+<td class="px-lg py-md">
+<span class="bg-surface-variant text-on-surface-variant px-sm py-1 rounded-full text-caption font-medium">Viewer</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">edit</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Sidebar: Usage & Danger Zone -->
+<aside class="md:col-span-4 space-y-gutter">
+<!-- Usage View -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<h3 class="font-headline-md text-headline-md mb-md">Usage Overview</h3>
+<div class="space-y-lg">
+<div class="space-y-sm">
+<div class="flex justify-between items-end">
+<p class="font-metadata text-metadata text-on-surface">Meetings</p>
+<p class="font-metadata text-metadata text-outline">18 / 50</p>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 36%"></div>
+</div>
+<p class="text-caption text-outline italic">Resets in 12 days</p>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-end">
+<p class="font-metadata text-metadata text-on-surface">LLM Tokens</p>
+<p class="font-metadata text-metadata text-outline">45% Used</p>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary" style="width: 45%"></div>
+</div>
+<p class="text-caption text-outline italic">2.2M / 5M credits remaining</p>
+</div>
+</div>
+</div>
+<!-- Image Placeholder -->
+<div class="rounded-xl overflow-hidden border border-outline-variant aspect-square">
+<img class="w-full h-full object-cover" data-alt="A minimalist and high-tech command center interface showing glowing abstract data visualizations in a clean corporate office environment. The scene is illuminated by soft, natural morning light, creating a bright and efficient light-mode aesthetic. Cool blue and professional gray tones dominate the workspace, which is designed with systematic precision and airy whitespace. The atmosphere conveys trust, enterprise intelligence, and high-performance workflow management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOfL7DLZ8e6K4OrIgFTCnhhXe0-J4twu5Z8jnyIN4ewGA95qkAFF1eBkob-jv2VSPI_5o25oBHPHQy4y3WEo_RgnC2y8Rs-IJF4LXCLzBbgw6gOEVQku0WMhUyholnibGq5416_6l8ubH9x3fPxO2ntL3HUa9LDdQo4UST2eIY217p-YQl_ZjgyIwQ0VoTAxwLTArnLlVe6_quMwMYoIa_WED7Z1O9Pl0HP1pMZhqqxlxRIFbukUHcLQ8-OsOjsMfI_uAZmSLNyaE"/>
+</div>
+<!-- Danger Zone -->
+<div class="bg-error-container/20 border border-error/20 rounded-xl p-lg">
+<div class="flex items-center gap-2 mb-md text-error">
+<span class="material-symbols-outlined">warning</span>
+<h3 class="font-headline-md text-headline-md">Danger Zone</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-error-container mb-md">
+                        Actions here are irreversible. Manual purges override scheduled retention policies.
+                    </p>
+<button class="w-full bg-error text-on-error px-md py-sm rounded-lg font-metadata text-metadata hover:bg-error/90 active:scale-95 transition-all">
+                        Run retention purge
+                    </button>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 pb-safe bg-surface border-t border-outline-variant">
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-caption text-caption">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-caption text-caption">Meetings</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-caption text-caption">Live</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">extension</span>
+<span class="font-caption text-caption">Integrations</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary font-medium active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-caption text-caption">Settings</span>
+</button>
+</nav>
+<script>
+        function switchTab(tabId) {
+            // Simple visual toggle for demonstration
+            const tabs = ['workspace', 'usage', 'roles', 'security', 'retention'];
+            tabs.forEach(t => {
+                const btn = document.getElementById('tab-' + t);
+                if (t === tabId) {
+                    btn.classList.add('bg-primary-container', 'text-on-primary-container');
+                    btn.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high');
+                } else {
+                    btn.classList.remove('bg-primary-container', 'text-on-primary-container');
+                    btn.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high');
+                }
+            });
+            console.log('Switched to:', tabId);
+        }
+
+        // Smooth reveal for bento cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('section > div, aside > div');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.4s ease-out';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body></html>

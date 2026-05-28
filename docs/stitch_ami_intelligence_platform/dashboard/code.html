@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MeetIQ Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .custom-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#c0c1ff",
+                      "on-secondary-container": "#5c647a",
+                      "on-tertiary-fixed": "#301400",
+                      "surface-variant": "#d3e4fe",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "outline": "#767586",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#494bd6",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "surface-bright": "#f8f9ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#0b1c30",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "primary-fixed": "#e1e0ff",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "secondary": "#565e74",
+                      "surface": "#f8f9ff",
+                      "surface-container": "#e5eeff",
+                      "background": "#f8f9ff",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#464554",
+                      "primary-container": "#6063ee",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed": "#131b2e",
+                      "tertiary-fixed": "#ffdcc5",
+                      "on-surface": "#0b1c30",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "primary": "#4648d4",
+                      "outline-variant": "#c7c4d7",
+                      "surface-dim": "#cbdbf5",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#dae2fd",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#213145",
+                      "inverse-primary": "#c0c1ff",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#07006c",
+                      "surface-container-low": "#eff4ff",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-tertiary-container": "#fffbff",
+                      "secondary-container": "#dae2fd",
+                      "tertiary": "#904900",
+                      "on-primary-container": "#fffbff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "tertiary-container": "#b55d00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "base": "4px",
+                      "margin-desktop": "32px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "lg": "24px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "metadata": ["Inter"],
+                      "display": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "caption": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "metadata": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                      "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-20 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface cursor-pointer">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">MeetIQ</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors duration-200">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+<div class="hidden md:flex items-center gap-2 border-l pl-4 border-outline-variant">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs">AC</div>
+<span class="font-metadata text-metadata text-on-surface-variant">Acme Corp</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto pb-8">
+<!-- Welcome Header -->
+<section class="mb-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="font-metadata text-metadata text-primary uppercase tracking-wider">Welcome back, Alex</span>
+<h2 class="font-display text-display text-on-surface mt-1">Acme Corp Workspace</h2>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-md py-2.5 bg-primary text-on-primary rounded-xl font-body-sm hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">upload</span>
+                        Upload recording
+                    </button>
+<button class="flex items-center gap-2 px-md py-2.5 bg-surface-container-high text-primary rounded-xl border border-primary-fixed-dim font-body-sm hover:bg-surface-container-highest active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">sensors</span>
+                        Start live
+                    </button>
+</div>
+</div>
+</section>
+<!-- Stats Grid -->
+<section class="grid grid-cols-2 lg:grid-cols-4 gap-gutter mb-xl">
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex flex-col justify-between min-h-[112px]">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary opacity-60">groups</span>
+<span class="text-caption font-caption text-secondary">+12%</span>
+</div>
+<div>
+<div class="font-display text-headline-lg text-on-surface">24</div>
+<div class="font-caption text-caption text-on-surface-variant">Total meetings</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex flex-col justify-between min-h-[112px]">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary">assignment_late</span>
+<span class="bg-primary-container/10 px-1.5 py-0.5 rounded text-[10px] font-bold text-primary">URGENT</span>
+</div>
+<div>
+<div class="font-display text-headline-lg text-primary">12</div>
+<div class="font-caption text-caption text-on-surface-variant">Action items pending</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex flex-col justify-between min-h-[112px]">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-tertiary">gavel</span>
+</div>
+<div>
+<div class="font-display text-headline-lg text-on-surface">8</div>
+<div class="font-caption text-caption text-on-surface-variant">Decisions this week</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex flex-col justify-between min-h-[112px]">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-outline">sync</span>
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></div>
+</div>
+<div>
+<div class="font-display text-headline-lg text-on-surface">2</div>
+<div class="font-caption text-caption text-on-surface-variant">Processing queue</div>
+</div>
+</div>
+</section>
+<!-- Main Bento Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-xl">
+<!-- Recent Meetings (Large Column) -->
+<section class="lg:col-span-2">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Meetings</h3>
+<button class="text-primary font-metadata text-metadata hover:underline">View all</button>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<!-- Meeting Row 1 -->
+<div class="flex items-center justify-between p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-on-surface">Q3 Budget Review</h4>
+<div class="flex gap-2 items-center mt-0.5">
+<span class="text-caption font-caption text-on-surface-variant">Oct 12, 10:00 AM</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-caption font-caption text-on-surface-variant">45 min</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden md:flex items-center gap-1.5 px-2 py-1 bg-surface-container-high rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">checklist</span>
+<span class="text-caption font-caption">4 actions</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold uppercase tracking-tighter">Ready</span>
+</div>
+</div>
+<!-- Meeting Row 2 -->
+<div class="flex items-center justify-between p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-on-surface">Project Phoenix Sync</h4>
+<div class="flex gap-2 items-center mt-0.5">
+<span class="text-caption font-caption text-on-surface-variant">Oct 11, 2:30 PM</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-caption font-caption text-on-surface-variant">30 min</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden md:flex items-center gap-1.5 px-2 py-1 bg-surface-container-high rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">checklist</span>
+<span class="text-caption font-caption">6 actions</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold uppercase tracking-tighter">Ready</span>
+</div>
+</div>
+<!-- Meeting Row 3 -->
+<div class="flex items-center justify-between p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">map</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-on-surface">Product Roadmap</h4>
+<div class="flex gap-2 items-center mt-0.5">
+<span class="text-caption font-caption text-on-surface-variant">Oct 11, 9:00 AM</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-caption font-caption text-on-surface-variant">60 min</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden md:flex items-center gap-1.5 px-2 py-1 bg-surface-container-high rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">checklist</span>
+<span class="text-caption font-caption">2 actions</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-[11px] font-bold uppercase tracking-tighter flex items-center gap-1">
+<span class="w-1 h-1 rounded-full bg-blue-700 animate-pulse"></span>
+                                Processing
+                            </span>
+</div>
+</div>
+<!-- Meeting Row 4 -->
+<div class="flex items-center justify-between p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-on-surface">Sales Kickoff</h4>
+<div class="flex gap-2 items-center mt-0.5">
+<span class="text-caption font-caption text-on-surface-variant">Oct 10, 4:00 PM</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-caption font-caption text-on-surface-variant">90 min</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden md:flex items-center gap-1.5 px-2 py-1 bg-surface-container-high rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">checklist</span>
+<span class="text-caption font-caption">0 actions</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold uppercase tracking-tighter">Ready</span>
+</div>
+</div>
+<!-- Meeting Row 5 -->
+<div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">event_repeat</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-on-surface">Weekly Standup</h4>
+<div class="flex gap-2 items-center mt-0.5">
+<span class="text-caption font-caption text-on-surface-variant">Oct 10, 9:00 AM</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-caption font-caption text-on-surface-variant">15 min</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden md:flex items-center gap-1.5 px-2 py-1 bg-surface-container-high rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">checklist</span>
+<span class="text-caption font-caption">3 actions</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold uppercase tracking-tighter">Ready</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Sidebar Assets / Quick Info -->
+<aside class="space-y-xl">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Insights</h3>
+<div class="bg-primary-container text-on-primary-container p-lg rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-body-lg font-bold mb-2">Workspace Health</h4>
+<p class="font-body-sm opacity-90 mb-4">You've captured 15% more decisions this week compared to last.</p>
+<div class="h-2 w-full bg-white/20 rounded-full">
+<div class="h-full bg-white rounded-full w-[65%]"></div>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">analytics</span>
+</div>
+</div>
+</div>
+<div class="bg-white border border-outline-variant rounded-xl p-md">
+<h3 class="font-metadata text-metadata font-bold text-on-surface-variant mb-md uppercase tracking-tight">Active Team</h3>
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="A professional woman with a warm smile and dark hair, wearing business casual attire in a brightly lit modern office. The background features clean white walls and soft natural sunlight typical of an enterprise tech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw8H1YLqBKj5EGwwJ7fL7UWRW_Dm6fT9hoQqxMB0qrgdZTqhd3MwZNfD05yo61Fd8TIDOIeWBk_ME1ItEL7pWk8qzbZDjzl5zt7dahfql6yCqe-gcG_S9Eil5MmTPqGYiDpqIxcCwOD5DypNFU6RwRk_DjbWqpMO_Q8LdVzMJ2mZ1XwaBYcLg7wj7eBw0geFRaQ76vA9I_a6UbF2ffZehS2EBiX824Or5Bv6qXIMFTXoRLMKtYl_lwZgq2q9-iQfar_m1gG7b4wMc"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="A focused young professional man in his late 20s with short hair and glasses, looking directly at the camera with a calm and confident expression. The lighting is high-key and professional, suitable for a corporate profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP7-kCIWremV-566ViPEfj-WYaV7Ahxv8ah2L27B0kJ0BovKzLFn3ah-viFsobnhhSiTPqEIyFzIq9eYb4WjsrtwJrB7YW3Pm2GFm27srpLbt7MPcraxaoI7aSULr6ppNc6B6xTvS3xPyOLBW-m8oCgAPRZbu2f3stdtRfS28n9Wvwb-gQBIjQUojnLcEBAvcolHe9TuQikWWCUPj0VN13JbnvZlmLnaDQ7LbCsyBsdhvLdJAljOsiUBybrdyeo4KPIGvfMWl38XA"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="A middle-aged man with graying hair and a friendly demeanor, wearing a navy blue blazer. He is positioned against a minimalist, well-lit office interior that emphasizes productivity and enterprise professionalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWRmvjsp7Qiku6vKpsp7ddeZweJWTrJV3fsNKkg6PpDvrDJAt6-5AHopzru82UErr34Jfe_RpZtsuGYnbmQWy1hfR2V2moCywnMZm7gEGDvH7PtmBIOO4yp2fO1gtGZ6g4e_ZyXzDZh-jU3xpHv4s4dZHZ-TuRNK6Hv2nNLXedoDc7avadP9gk0I3GlL7C04FyzlhoigrxCt57h-fuTpOj3Odhr2Zfq9vjOn43XxWAgFSv6xym6BaCiftRvAsvs0SlHLReqI61ZAs"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-xs font-bold text-on-surface-variant">+8</div>
+</div>
+<p class="text-caption font-caption text-on-surface-variant mt-3">8 teammates currently in live syncs.</p>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface border-t border-outline-variant px-2 pb-safe">
+<button class="flex flex-col items-center justify-center text-primary font-medium active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-caption text-caption">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-caption text-caption">Meetings</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150">
+<div class="relative">
+<span class="material-symbols-outlined">sensors</span>
+<span class="absolute top-0 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+</div>
+<span class="font-caption text-caption">Live</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">extension</span>
+<span class="font-caption text-caption">Integrations</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-caption text-caption">Settings</span>
+</button>
+</nav>
+<!-- Simple Hover & Interaction script -->
+<script>
+        document.querySelectorAll('button, .meeting-row').forEach(el => {
+            el.addEventListener('click', () => {
+                // Micro-interaction simulation
+                console.log('Component interaction tracked');
+            });
+        });
+    </script>
+</body></html>

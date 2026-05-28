@@ -1,0 +1,46 @@
+# Render Blueprint — MeetIQ Phase 5 backend
+# Docs: https://render.com/docs/blueprint-spec
+#
+# Deploy from repo root with:
+#   render.yaml path: docs/phase5/backend/render.yaml
+# Or connect the repo and set "Root Directory" to docs/phase5/backend in the dashboard.
+
+services:
+  - type: web
+    name: meetiq-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: starter
+    region: oregon
+    healthCheckPath: /health
+    autoDeploy: true
+    disk:
+      name: meetiq-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DEV_AUTH_ENABLED
+        value: "true"
+      - key: AUTH_DISABLED
+        value: "false"
+      - key: INTEGRATIONS_STUB_MODE
+        value: "false"
+      - key: WHISPER_MODEL
+        value: tiny
+      - key: STORAGE_ROOT
+        value: /var/data/storage
+      - key: DATABASE_URL
+        value: sqlite:////var/data/app.db
+      - key: CORS_ORIGINS
+        sync: false
+      # Email (optional — set in Render dashboard)
+      # - key: SMTP_HOST
+      # - key: SMTP_PORT
+      # - key: SMTP_USER
+      # - key: SMTP_PASSWORD
+      # - key: SMTP_FROM

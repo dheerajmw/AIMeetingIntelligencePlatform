@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Integrations Hub | MeetIQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-secondary-container": "#5c647a",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "outline": "#767586",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#494bd6",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "primary-fixed": "#e1e0ff",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "secondary": "#565e74",
+                        "surface": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#464554",
+                        "primary-container": "#6063ee",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#131b2e",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "primary": "#4648d4",
+                        "outline-variant": "#c7c4d7",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#dae2fd",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "inverse-primary": "#c0c1ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#07006c",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-container": "#dae2fd",
+                        "tertiary": "#904900",
+                        "on-primary-container": "#fffbff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#b55d00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "margin-desktop": "32px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "metadata": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "caption": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "metadata": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                        "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">MeetIQ</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile max-w-[1200px] mx-auto min-h-screen">
+<!-- Header Section -->
+<div class="mb-xl">
+<h2 class="font-display text-display text-on-surface mb-xs">Integrations Hub</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Connect your existing workflow tools to automatically sync meeting summaries, action items, and transcripts into your project management systems.</p>
+</div>
+<!-- Integration Grid -->
+<div class="integration-grid">
+<!-- Jira Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-md flex flex-col justify-between hover:border-primary transition-colors duration-200">
+<div class="flex justify-between items-start mb-lg">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container-low rounded-xl flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[32px]">task</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Jira</h3>
+<p class="font-caption text-caption text-on-surface-variant">Ticket automation</p>
+</div>
+</div>
+<div class="flex items-center gap-xs text-on-secondary-container bg-surface-container rounded-full px-sm py-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-metadata text-metadata">Connected</span>
+</div>
+</div>
+<div class="space-y-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Automatically create tickets from meeting action items in your preferred project board.</p>
+<button class="w-full bg-surface-container-low text-primary font-body-sm py-sm rounded-lg border border-primary hover:bg-primary hover:text-white transition-all duration-200">Configure</button>
+</div>
+</div>
+<!-- Linear Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-md flex flex-col justify-between hover:border-primary transition-colors duration-200">
+<div class="flex justify-between items-start mb-lg">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container-low rounded-xl flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[32px]">rebase_edit</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Linear</h3>
+<p class="font-caption text-caption text-on-surface-variant">Modern issue tracking</p>
+</div>
+</div>
+<div class="flex items-center gap-xs text-outline bg-surface-container-low rounded-full px-sm py-1">
+<span class="font-metadata text-metadata">Not configured</span>
+</div>
+</div>
+<div class="space-y-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sync high-speed engineering updates directly from meeting transcripts to Linear cycles.</p>
+<button class="w-full bg-primary text-white font-body-sm py-sm rounded-lg hover:bg-primary-container transition-all duration-200" onclick="toggleModal('linear-modal')">Configure</button>
+</div>
+</div>
+<!-- Slack Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-md flex flex-col justify-between hover:border-primary transition-colors duration-200">
+<div class="flex justify-between items-start mb-lg">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container-low rounded-xl flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[32px]">forum</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Slack</h3>
+<p class="font-caption text-caption text-on-surface-variant">Team communication</p>
+</div>
+</div>
+<div class="flex items-center gap-xs text-on-secondary-container bg-surface-container rounded-full px-sm py-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-metadata text-metadata">Connected</span>
+</div>
+</div>
+<div class="space-y-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Post automated summaries to specific channels immediately after a meeting ends.</p>
+<button class="w-full bg-surface-container-low text-primary font-body-sm py-sm rounded-lg border border-primary hover:bg-primary hover:text-white transition-all duration-200">Configure</button>
+</div>
+</div>
+<!-- Trello Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-md flex flex-col justify-between hover:border-primary transition-colors duration-200">
+<div class="flex justify-between items-start mb-lg">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container-low rounded-xl flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[32px]">dashboard_customize</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Trello</h3>
+<p class="font-caption text-caption text-on-surface-variant">Visual board sync</p>
+</div>
+</div>
+<div class="flex items-center gap-xs text-outline bg-surface-container-low rounded-full px-sm py-1">
+<span class="font-metadata text-metadata">Not configured</span>
+</div>
+</div>
+<div class="space-y-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Populate Trello cards with meeting notes and assigned tasks for visual teams.</p>
+<button class="w-full bg-primary text-white font-body-sm py-sm rounded-lg hover:bg-primary-container transition-all duration-200">Configure</button>
+</div>
+</div>
+<!-- Email Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-md flex flex-col justify-between hover:border-primary transition-colors duration-200">
+<div class="flex justify-between items-start mb-lg">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container-low rounded-xl flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[32px]">mail</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Email</h3>
+<p class="font-caption text-caption text-on-surface-variant">Inbox automation</p>
+</div>
+</div>
+<div class="flex items-center gap-xs text-on-secondary-container bg-surface-container rounded-full px-sm py-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-metadata text-metadata">Connected</span>
+</div>
+</div>
+<div class="space-y-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Send detailed follow-up emails to all participants with a single click after meetings.</p>
+<button class="w-full bg-surface-container-low text-primary font-body-sm py-sm rounded-lg border border-primary hover:bg-primary hover:text-white transition-all duration-200">Configure</button>
+</div>
+</div>
+</div>
+<!-- Footer Notice -->
+<footer class="mt-xl pt-lg border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between gap-md opacity-60">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">info</span>
+<p class="font-caption text-caption">Integrations are subject to third-party API rate limits. Retry policies are automatically managed by our sync engine.</p>
+</div>
+<div class="flex gap-lg">
+<a class="font-caption text-caption hover:underline" href="#">API Documentation</a>
+<a class="font-caption text-caption hover:underline" href="#">Security Policy</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 bg-surface border-t border-outline-variant pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-caption text-caption">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-caption text-caption">Meetings</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-caption text-caption">Live</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary font-medium">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">extension</span>
+<span class="font-caption text-caption">Integrations</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-caption text-caption">Settings</span>
+</div>
+</nav>
+<!-- Simulation Modal: OAuth Setup (Hidden by default) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center hidden bg-on-background/20 backdrop-blur-sm px-margin-mobile" id="linear-modal">
+<div class="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden border border-outline-variant">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 bg-surface-container-low rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">rebase_edit</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Connect Linear</h3>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-on-surface" onclick="toggleModal('linear-modal')">close</button>
+</div>
+<div class="p-lg space-y-lg">
+<div class="space-y-sm">
+<label class="font-metadata text-metadata block text-on-surface-variant">Workspace URL</label>
+<div class="relative">
+<input class="w-full border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none font-body-sm transition-all" placeholder="acme-corp.linear.app" type="text"/>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg flex gap-md">
+<span class="material-symbols-outlined text-primary">security</span>
+<div>
+<p class="font-metadata text-metadata">Secure OAuth 2.0</p>
+<p class="font-caption text-caption text-on-surface-variant">MeetIQ will only request read/write access to your issues and cycles.</p>
+</div>
+</div>
+<div class="flex gap-md pt-md">
+<button class="flex-1 font-body-sm py-sm rounded-lg border border-outline-variant hover:bg-surface transition-all" onclick="toggleModal('linear-modal')">Cancel</button>
+<button class="flex-1 bg-primary text-white font-body-sm py-sm rounded-lg hover:bg-primary-container transition-all flex justify-center items-center gap-sm" id="auth-btn" onclick="simulateAuth()">
+<span>Authenticate</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.toggle('hidden');
+        }
+
+        function simulateAuth() {
+            const btn = document.getElementById('auth-btn');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span><span>Connecting...</span>';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check</span><span>Authorized</span>';
+                btn.classList.replace('bg-primary', 'bg-emerald-600');
+                
+                setTimeout(() => {
+                    toggleModal('linear-modal');
+                    // Reset for demo
+                    btn.innerHTML = originalContent;
+                    btn.classList.replace('bg-emerald-600', 'bg-primary');
+                    btn.disabled = false;
+                }, 1000);
+            }, 1500);
+        }
+
+        // Close modal on click outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('linear-modal');
+            if (event.target == modal) {
+                toggleModal('linear-modal');
+            }
+        }
+    </script>
+</body></html>

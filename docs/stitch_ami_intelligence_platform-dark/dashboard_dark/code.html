@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MeetIQ Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#c0c1ff",
+                      "inverse-surface": "#dae2fd",
+                      "primary": "#c0c1ff",
+                      "secondary-fixed-dim": "#7bd0ff",
+                      "surface-tint": "#c0c1ff",
+                      "surface-variant": "#2d3449",
+                      "surface-bright": "#31394d",
+                      "surface-container": "#171f33",
+                      "on-secondary-container": "#00374d",
+                      "on-error": "#690005",
+                      "on-secondary": "#00354a",
+                      "on-primary": "#1000a9",
+                      "on-tertiary-fixed-variant": "#92002a",
+                      "on-surface-variant": "#c7c4d7",
+                      "surface-container-highest": "#2d3449",
+                      "error": "#ffb4ab",
+                      "on-surface": "#dae2fd",
+                      "tertiary-fixed": "#ffdadb",
+                      "on-secondary-fixed-variant": "#004c69",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "primary-container": "#8083ff",
+                      "secondary": "#7bd0ff",
+                      "on-secondary-fixed": "#001e2c",
+                      "on-primary-fixed": "#07006c",
+                      "surface-container-low": "#131b2e",
+                      "surface": "#0b1326",
+                      "inverse-primary": "#494bd6",
+                      "on-primary-container": "#0d0096",
+                      "on-tertiary": "#67001b",
+                      "tertiary-container": "#ff516a",
+                      "error-container": "#93000a",
+                      "tertiary": "#ffb2b7",
+                      "outline-variant": "#464554",
+                      "surface-dim": "#0b1326",
+                      "surface-container-high": "#222a3d",
+                      "surface-container-lowest": "#060e20",
+                      "outline": "#908fa0",
+                      "secondary-fixed": "#c4e7ff",
+                      "background": "#0b1326",
+                      "on-background": "#dae2fd",
+                      "secondary-container": "#00a6e0",
+                      "on-tertiary-container": "#5b0017",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#ffb2b7",
+                      "on-tertiary-fixed": "#40000d",
+                      "inverse-on-surface": "#283044",
+                      "primary-fixed": "#e1e0ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "gutter": "24px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "margin": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "code": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "code": ["13px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-md h-16 bg-surface border-b border-surface-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<span class="font-headline-sm-mobile font-bold text-on-surface">MeetIQ</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center gap-sm px-md py-xs bg-surface-container rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md text-on-surface placeholder-on-surface-variant w-48" placeholder="Search insights..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer relative">
+                notifications
+                <span class="absolute top-0 right-0 w-2 h-2 bg-tertiary rounded-full"></span>
+</span>
+<img alt="Alex Rivers" class="w-8 h-8 rounded-full border border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0K5i4DKhAfa2dS7-b2Zh-X427zDXk5QmAlMOYB2lUz1lDt7TWSUtoel0w8Utxt60-5IrDcZJOZvQ-r3d3iRPMCwaqdMWgzrHKG8My6g2oc96kkgFZqf2EPP8Yb9O8qM-MMjyddrRjh7EkmWzJVL4cbm9GJLgxC0nSVhm2bp-ms5yNgXdC3l6dJeTfStaMSz_Pnjlw1X4lvDqmrzry18hHMfwkv46IKiPc2Ak7VrYxy1F0AUgAXoOAlRpqkB-9QA5NB40if0Qprn0"/>
+</div>
+</header>
+<!-- Sidebar (Desktop) -->
+<aside class="fixed inset-y-0 left-0 z-[60] hidden md:flex flex-col p-md gap-sm bg-surface-container-low border-r border-surface-variant w-64 mt-16">
+<div class="flex items-center gap-md p-md mb-md bg-surface-container rounded-xl">
+<img alt="Alex Rivers" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxoC2M3WviB7egFd_hyRe4RUnJKtN4BKeqryZC-ZlDE3Xa5-x5nVuUQAZWHkpZzlTgZLeRpH7uUI_ImqA7eo4ZdofS_bltVPVoIOR63EFEn9Etw_luCRD7084m1zRmtceBz3WAvhH6ZmCh7NfhuExuBYi_TQ1NA0_vZUVo5Hcr06U6SQgmF7t-PMOllyj6kn9a20BbNZCH5x7Wr-Mtghfhc8gRhWfzA11mx5Ou8g706VmZNahmRTL-w8zO4CE9qidHZzMl3NrUsak"/>
+<div>
+<p class="font-headline-sm-mobile text-headline-sm-mobile text-on-surface">Alex Rivers</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Pro Plan • Online</p>
+</div>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="bg-primary-container text-on-primary-container font-semibold rounded-lg flex items-center gap-md px-md py-sm transition-all duration-200 translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant transition-colors flex items-center gap-md px-md py-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-body-md text-body-md">Meetings</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant transition-colors flex items-center gap-md px-md py-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">video_library</span>
+<span class="font-body-md text-body-md">Recordings</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant transition-colors flex items-center gap-md px-md py-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Team Analytics</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant transition-colors flex items-center gap-md px-md py-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="pt-24 pb-24 md:pl-64 px-md md:px-lg max-w-[1600px] mx-auto">
+<!-- Welcome Section -->
+<section class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Welcome back, Alex.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">You're currently in the <span class="text-primary font-bold">Acme Corp Workspace</span>.</p>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-sm px-lg py-md bg-[#6366F1] text-white rounded-lg font-label-md hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-900/20">
+<span class="material-symbols-outlined">upload_file</span>
+                    UPLOAD RECORDING
+                </button>
+<button class="flex items-center gap-sm px-lg py-md border border-outline-variant text-on-surface rounded-lg font-label-md hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined">sensors</span>
+                    START LIVE
+                </button>
+</div>
+</section>
+<!-- Stats Grid -->
+<section class="grid grid-cols-2 lg:grid-cols-4 gap-md mb-lg">
+<div class="p-lg bg-[#1E293B] border border-[#334155] rounded-xl flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-on-surface-variant">TOTAL MEETINGS</span>
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<div class="text-headline-lg font-headline-lg">24</div>
+<div class="font-label-md text-on-secondary-fixed-variant">+4 this week</div>
+</div>
+<div class="p-lg bg-[#1E293B] border border-[#334155] rounded-xl flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-on-surface-variant">PENDING ACTIONS</span>
+<span class="material-symbols-outlined text-tertiary">priority_high</span>
+</div>
+<div class="text-headline-lg font-headline-lg flex items-center gap-sm">
+                    12
+                    <span class="bg-tertiary-container text-on-tertiary-container px-sm py-xs rounded-full font-label-md text-[10px]">URGENT</span>
+</div>
+<div class="font-label-md text-tertiary-fixed-dim">Next due in 2h</div>
+</div>
+<div class="p-lg bg-[#1E293B] border border-[#334155] rounded-xl flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-on-surface-variant">DECISIONS</span>
+<span class="material-symbols-outlined text-secondary">verified</span>
+</div>
+<div class="text-headline-lg font-headline-lg">8</div>
+<div class="font-label-md text-secondary-fixed-dim">Aligned with goals</div>
+</div>
+<div class="p-lg bg-[#1E293B] border border-[#334155] rounded-xl flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-on-surface-variant">QUEUE</span>
+<span class="material-symbols-outlined text-outline">hourglass_empty</span>
+</div>
+<div class="text-headline-lg font-headline-lg">2</div>
+<div class="font-label-md text-on-surface-variant">Processing transcript</div>
+</div>
+</section>
+<!-- Main Bento Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Recent Meetings -->
+<div class="lg:col-span-8 bg-[#1E293B] border border-[#334155] rounded-xl overflow-hidden flex flex-col">
+<div class="px-lg py-md border-b border-[#334155] flex justify-between items-center bg-surface-container-low">
+<h2 class="font-headline-sm text-on-surface">Recent Meetings</h2>
+<button class="text-primary font-label-md hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-[#334155]">
+<th class="px-lg py-md font-label-md text-on-surface-variant">MEETING NAME</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant">DATE</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant">STATUS</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant">PARTICIPANTS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#334155]">
+<tr class="hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="text-body-md font-semibold">Q3 Budget Review</span>
+<span class="text-xs text-on-surface-variant">Finance Dept</span>
+</div>
+</td>
+<td class="px-lg py-md text-body-md">Oct 24, 10:30 AM</td>
+<td class="px-lg py-md">
+<span class="bg-[rgba(16,185,129,0.1)] text-[#10B981] px-md py-1 rounded-full font-label-md text-[10px] uppercase">Ready</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex -space-x-2">
+<img alt="User" class="w-6 h-6 rounded-full border border-[#1E293B]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMuj7N0fr7Z6BfT4o3KLzec6ILu9d3C44lpgXqyqLl26-FhNmZp5sAtKiInmuU8B0dyTCp1zrzCJm3TqjVrTKJnEDuX6nKmAHwq6ZdDNlQWZBFsET4Uzs48kacd50AxRD84gecLjaNdvYLL_PF_mnyzcmypOHYlKQyvkSpzEola6toS-__gPZkUaoEgefpFpWSk3hO2gT6q9PfgqYLGcpzelgM8xRgiBjQ2KFfi4SFJQidSmT8IAe2f517LL0f3gO_-PuqtGLE4xk"/>
+<img alt="User" class="w-6 h-6 rounded-full border border-[#1E293B]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC03KVDC4dVdgrt4xJDvX855CxoNmwQo2Kcx3l61ODNuMSILtl_QuOG_mmwMW4dJFEMPapQvD4WiEG4KuOX9upmEqmGGhFIYEtIGffjlNj_tHGM9e3N8EaIBU4jysdMqEMOs_nknArPx5Kk_MiGfmtSsDHMaqJh6fezZ7GEzcYkda-Nmw0s6-YnsP0hGWOYJlcghY8tW9MjMbk5Itb8M0iHniZKU0kADGPw-IEK1hSjdUJ_UU310e0L3T7e28Rx3q5H8Ae5eyEqKeE"/>
+<span class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-[10px] border border-[#1E293B]">+3</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors cursor-pointer">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="text-body-md font-semibold">Project Phoenix Sync</span>
+<span class="text-xs text-on-surface-variant">Engineering</span>
+</div>
+</td>
+<td class="px-lg py-md text-body-md">Oct 24, 02:15 PM</td>
+<td class="px-lg py-md">
+<span class="bg-[rgba(16,185,129,0.1)] text-[#10B981] px-md py-1 rounded-full font-label-md text-[10px] uppercase">Ready</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex -space-x-2">
+<img alt="User" class="w-6 h-6 rounded-full border border-[#1E293B]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2x7IAa2oNBAp0N9FdydQugUjqXAofRIrtqDcPjTO5Ts60dp7ewq1yYK4GzWH51Q2p4ryK-1vqbiI1WOkl3DD3eg1FO2m6lvlrtqfc8UH6Gl9rZiX-ks3tl6zPNskpEx_zfszOJVqMg9UE7gJPoYLbgwD8j6gP2Qe7F1MZ8HO7IgtdfTWE13BuooUNWgRL_BwrH9CSEEYj7G45jLM4FtX-_7bRi6J8quRRHJegbNGhSYSg88ldg1e5TaVOiJ_yhKgrU9R8x3w0t58"/>
+<img alt="User" class="w-6 h-6 rounded-full border border-[#1E293B]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8DrnpHXZAosg6A4aK7BY81UqDhxx-H46ZaIV-ed6TZxU-P54lTothssjmZFBDqsCHRUVIdM4b9_lghQD93DZbNAObomNu4ARTCll1-_751E3BwNWp8CJqXPpL2fMWa24_BaW8e_UQJsZdjzeQDSRkMma0k0-HzMi4lb2e5_BJWdTbZSja7if5rY9elTXVZsP1kRI_6VJcsCwP6zec0Gl3pZB8XtMeeLhtPELjeWUJ6TPUNGKTDiOOgkC_X8kFLpZL50pPdZhSHMY"/>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors cursor-pointer">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="text-body-md font-semibold">Product Roadmap</span>
+<span class="text-xs text-on-surface-variant">Product Strategy</span>
+</div>
+</td>
+<td class="px-lg py-md text-body-md">Oct 24, 04:00 PM</td>
+<td class="px-lg py-md">
+<span class="bg-[rgba(245,158,11,0.1)] text-[#F59E0B] px-md py-1 rounded-full font-label-md text-[10px] uppercase">Processing</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex -space-x-2">
+<img alt="User" class="w-6 h-6 rounded-full border border-[#1E293B]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFeSVdBWey0VyVwum7it_TU0hIfswA4lxDhXJ-1rIPMlpPhyCC00OOPcJzbLV2m39WaKEuvObfeqCg3Vc_b3kgQPEAeriRjBZKvWR7q6WynEzU5qRcLOIvBbUfnLscq6Ue8iQO6tyBHwIFa867FBBOybQCTyrwaOsubFVFksFhfltBkePcwWMGC2iufjQAChJzINfc5ITK59DIHE8f6wCHj545gdLJrkqntSEIfDWDhedKIPWyyaL8R2mwyBWZigOx16lpyvrOcrM"/>
+<img alt="User" class="w-6 h-6 rounded-full border border-[#1E293B]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaoB4ldzOHFaVDUX9vFaDo6-kXfRz6RPZ9qNSwxZqP3XiRzc7wPh469x0kVmGqBo7fgNp8lvSAWqmayz7HH6ga2Un7-T6WzvXZLp6Mpl8JkiO7Q_tCtusYnQeJmsu537xZPGTsbDkJBoNKhSztOarhcOgprtz9X7-Z8Etn3zo2omRmtpvmJJ-RbLxhPHnKL0EYs41a3LvBOR_4ggg72eyfdKd5vZnfCbNO3uVjiOAyXc9HkLsvrqQueihSRS3xhe0BtFJk6n5-eO0"/>
+<span class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-[10px] border border-[#1E293B]">+8</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Insights & Team -->
+<div class="lg:col-span-4 flex flex-col gap-lg">
+<!-- Workspace Health Card -->
+<div class="bg-gradient-to-br from-[#1E293B] to-[#0F172A] border border-[#334155] rounded-xl p-lg relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity"></div>
+<div class="flex items-center gap-md mb-md">
+<div class="p-sm bg-primary-container/20 rounded-lg">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<h3 class="font-headline-sm">Workspace Health</h3>
+</div>
+<p class="text-body-md text-on-surface-variant mb-md leading-relaxed">
+                        Decision-making velocity has improved by <span class="text-[#10B981] font-bold">15%</span> compared to last sprint. Most decisions are occurring in the first 20 minutes of syncs.
+                    </p>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary text-sm">trending_up</span>
+<span class="font-label-md text-on-secondary-fixed-variant">88% Aligned Action Items</span>
+</div>
+</div>
+<!-- Active Team -->
+<div class="bg-[#1E293B] border border-[#334155] rounded-xl p-lg">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-sm">Active Team</h3>
+<span class="flex items-center gap-xs">
+<span class="w-2 h-2 bg-[#10B981] rounded-full animate-pulse"></span>
+<span class="text-[10px] font-label-md text-on-surface-variant">LIVE NOW</span>
+</span>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex items-center justify-between p-sm hover:bg-surface-container rounded-lg transition-colors cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="relative">
+<img alt="Sarah Connor" class="w-10 h-10 rounded-full border border-surface-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBftFo21moo7J6MtMZZOGID8QgZ59RpCFryGhDuFX48WVb8XgwoMvZy-jA8sA-zFnlVjMJWox69AV5z83stRT_I6N9-L4GwJZTIMDzp04DSeKOIZcJ8xMr_hN2BxB8REe1R-QKD3VD3XgWVLKWWFXBymGERNtfRda-wVXli-9-JW20Gzu5ez7phul6racvAlWlIusdxWCdg1XORRYPLPRSJoliwc8UWNenn874UCP-h7uH7M8ATMAv-ILLRbJqd5f044ahAbTyhE68"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#10B981] border-2 border-[#1E293B] rounded-full"></span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-semibold">Sarah Connor</span>
+<span class="text-xs text-on-surface-variant">In Design Review</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">chat_bubble</span>
+</div>
+<div class="flex items-center justify-between p-sm hover:bg-surface-container rounded-lg transition-colors cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="relative">
+<img alt="Tom Miller" class="w-10 h-10 rounded-full border border-surface-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjvVRls6FyZUJwkVbqFF2gv5IKZxKmAYnoir8pI3-A1TjEh5yB4rU_j4vhGTwitqVPIOFGxcZbwdN66RQjSPImH237U3rlHQ6dfB2AwVraIeveQ6RXMZxcsMYHCTSva8c4XZ3599_cyOiFCHxC5Yw-DQFx2u2YXdIn2SibOyKZPZ_krrEkcsDNshsbnRWzveTpLmOm-6gssYHtAUodnBHymnlE9ePIE35Qxi6thrZmHEdJ7GiJkziZgtKZJMmLeFcM7O1WbFSoU3Y"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#10B981] border-2 border-[#1E293B] rounded-full"></span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-semibold">Tom Miller</span>
+<span class="text-xs text-on-surface-variant">Summarizing Q3 Budget</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">chat_bubble</span>
+</div>
+<div class="flex items-center justify-between p-sm hover:bg-surface-container rounded-lg transition-colors cursor-pointer opacity-50">
+<div class="flex items-center gap-md">
+<div class="relative">
+<img alt="Elena Rodriguez" class="w-10 h-10 rounded-full border border-surface-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_B5uMJ9KuinPLFYJ-eOp_ErwAK8uLI9kLhuGtol3hW3wd-naSMGWaQzcu_ylnjnOsGpNOmycfBFiM_Ucd4-hQwFqWu-iXEvWQS7ns9UiJJZg9dtA-ka7biFSoVu7cO2rRAd3oe3xrArXNyyFckvA80GbWoLSgr_a33TVeMFj4ZwNbtjnCCMCjUBXTmft78ELNHo6__F_8BPqezjqv-e7NFY8MW5SWJ1qYAv71cFC96H07TQTcpKuOZHpyhl8inzkLFVkpkFee8dU"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-outline-variant border-2 border-[#1E293B] rounded-full"></span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-semibold">Elena Rodriguez</span>
+<span class="text-xs text-on-surface-variant">Away</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">schedule</span>
+</div>
+</div>
+<button class="w-full mt-md py-sm border border-[#334155] rounded-lg font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all">
+                        Invite Members
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-sm pb-safe bg-surface-container border-t border-surface-variant rounded-t-xl">
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md">Meetings</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-label-md text-label-md">Live</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all">
+<span class="material-symbols-outlined">extension</span>
+<span class="font-label-md text-label-md">Integrations</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</button>
+</nav>
+<!-- Interactive Atmospheric Elements -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden -z-10" id="glow-container">
+<div class="absolute w-[800px] h-[800px] bg-primary opacity-5 rounded-full blur-[120px] -top-96 -left-96 animate-pulse"></div>
+<div class="absolute w-[600px] h-[600px] bg-secondary opacity-5 rounded-full blur-[100px] bottom-0 right-0 translate-x-1/2 translate-y-1/2"></div>
+</div>
+<script>
+        // Micro-interaction for Stat Cards
+        document.querySelectorAll('.stat-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('scale-[1.02]');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('scale-[1.02]');
+            });
+        });
+
+        // Simulating some light activity glow
+        const glowContainer = document.getElementById('glow-container');
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            // This is a subtle mouse-following light effect
+            // glowContainer.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(99, 102, 241, 0.05) 0%, transparent 40%)`;
+        });
+    </script>
+</body></html>

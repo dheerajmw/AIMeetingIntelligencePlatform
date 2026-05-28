@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c0c1ff",
+                    "inverse-surface": "#dae2fd",
+                    "primary": "#c0c1ff",
+                    "secondary-fixed-dim": "#7bd0ff",
+                    "surface-tint": "#c0c1ff",
+                    "surface-variant": "#2d3449",
+                    "surface-bright": "#31394d",
+                    "surface-container": "#171f33",
+                    "on-secondary-container": "#00374d",
+                    "on-error": "#690005",
+                    "on-secondary": "#00354a",
+                    "on-primary": "#1000a9",
+                    "on-tertiary-fixed-variant": "#92002a",
+                    "on-surface-variant": "#c7c4d7",
+                    "surface-container-highest": "#2d3449",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6",
+                    "error-container": "#93000a",
+                    "tertiary": "#ffb2b7",
+                    "outline-variant": "#464554",
+                    "surface-dim": "#0b1326",
+                    "surface-container-high": "#222a3d",
+                    "surface-container-lowest": "#060e20",
+                    "outline": "#908fa0",
+                    "secondary-fixed": "#c4e7ff",
+                    "background": "#0b1326",
+                    "on-background": "#dae2fd",
+                    "secondary-container": "#00a6e0",
+                    "on-tertiary-container": "#5b0017",
+                    "on-tertiary": "#67001b",
+                    "tertiary-container": "#ff516a",
+                    "inverse-on-surface": "#283044",
+                    "primary-fixed": "#e1e0ff",
+                    "on-surface": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "margin": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "code": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "code": ["13px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { background-color: #0F172A; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #1E293B 25%, #334155 50%, #1E293B 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+        }
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background font-body-md">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-md h-16 bg-surface border-b border-surface-variant">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">menu</span>
+<span class="font-headline-sm-mobile font-bold text-on-surface">MeetIQ</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
+<span class="text-on-primary-container font-label-md">AR</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Section Header -->
+<div class="md:col-span-12 mb-sm">
+<h1 class="font-headline-lg text-headline-lg text-primary">System States Showcase</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">A comprehensive view of error handling, empty states, and alert patterns across the MeetIQ ecosystem.</p>
+</div>
+<!-- 1. Usage Alert (Amber/Pill Style) -->
+<div class="md:col-span-12">
+<div class="bg-secondary-container/10 border border-secondary-container p-md rounded-xl flex flex-col md:flex-row items-center justify-between gap-md">
+<div class="flex items-center gap-md">
+<div class="bg-secondary-container text-on-secondary-container p-sm rounded-lg">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">You've reached your monthly limit</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Upgrade to the Pro Plan to continue recording meetings and generating AI insights.</p>
+</div>
+</div>
+<button class="bg-secondary-container hover:bg-secondary-fixed-dim text-on-secondary-container font-label-md px-lg py-sm rounded-lg transition-colors whitespace-nowrap">
+                    Upgrade Now
+                </button>
+</div>
+</div>
+<!-- 2. Transcription Failed Card (Red Border/High Priority) -->
+<div class="md:col-span-6">
+<div class="bg-error-container/20 border border-error p-lg rounded-xl h-full flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">error</span>
+<span class="font-label-md text-error uppercase tracking-wider">Critical Failure</span>
+</div>
+<span class="font-code text-on-surface-variant">ERR_402_TRANS</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Transcription Failed</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">The audio processing engine encountered an unrecoverable error while analyzing "Product Sync Q3". No tokens were consumed for this attempt.</p>
+</div>
+<div class="flex gap-md">
+<button class="bg-error text-on-error font-label-md px-lg py-sm rounded-lg flex items-center gap-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">refresh</span> Retry Transcription
+                    </button>
+<button class="border border-outline-variant text-on-surface-variant font-label-md px-lg py-sm rounded-lg hover:bg-surface-variant transition-colors">
+                        View Logs
+                    </button>
+</div>
+</div>
+</div>
+<!-- 3. Analysis Failed / Skeleton Loader State -->
+<div class="md:col-span-6">
+<div class="bg-surface-container border border-surface-variant p-lg rounded-xl h-full">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-on-surface-variant">analytics</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface-variant">Transcript Analysis</h3>
+</div>
+<!-- Skeleton Loader Pattern -->
+<div class="space-y-md">
+<div class="skeleton h-4 w-3/4 rounded-full opacity-40"></div>
+<div class="skeleton h-4 w-full rounded-full opacity-40"></div>
+<div class="skeleton h-4 w-5/6 rounded-full opacity-40"></div>
+<div class="py-lg flex flex-col items-center justify-center text-center">
+<div class="bg-surface-variant/50 p-md rounded-full mb-md">
+<span class="material-symbols-outlined text-on-surface-variant text-[32px]">query_stats</span>
+</div>
+<p class="font-label-md text-on-surface-variant mb-sm">ANALYSIS MASKED</p>
+<p class="font-body-md text-on-surface-variant px-xl italic">"Insights cannot be generated while transcription is in a failed state."</p>
+</div>
+<div class="skeleton h-4 w-1/2 rounded-full opacity-20"></div>
+<div class="skeleton h-4 w-2/3 rounded-full opacity-20"></div>
+</div>
+</div>
+</div>
+<!-- 4. Meeting Not Found (Empty State) -->
+<div class="md:col-span-8">
+<div class="bg-surface-container-low border border-surface-variant rounded-xl overflow-hidden flex flex-col md:flex-row h-[320px]">
+<div class="w-full md:w-1/3 bg-surface-container-highest flex items-center justify-center p-lg">
+<span class="material-symbols-outlined text-primary text-[80px] opacity-20">search_off</span>
+</div>
+<div class="w-full md:w-2/3 p-xl flex flex-col justify-center">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Meeting Not Found</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">The meeting record you are looking for might have been deleted, moved, or the link is invalid. Please check your dashboard for the most recent recordings.</p>
+<div class="flex gap-md">
+<a class="bg-primary text-on-primary font-label-md px-lg py-sm rounded-lg hover:opacity-90 transition-opacity" href="#">
+                            Return to Dashboard
+                        </a>
+</div>
+</div>
+</div>
+</div>
+<!-- 5. Access Denied (Bento Card Style) -->
+<div class="md:col-span-4">
+<div class="bg-[#1E293B] border border-[#334155] rounded-xl p-lg h-full flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 rounded-full bg-tertiary-container/20 flex items-center justify-center mb-lg">
+<span class="material-symbols-outlined text-tertiary-container text-[32px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Access Denied</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">This workspace is restricted to administrators and specific team members.</p>
+<button class="w-full border border-outline-variant text-on-surface-variant font-label-md py-sm rounded-lg hover:bg-surface-variant transition-colors">
+                    Request Access
+                </button>
+</div>
+</div>
+<!-- 6. Bottom Grid Patterns (Toast & Inline States) -->
+<div class="md:col-span-4 bg-surface-container-high p-md rounded-xl border border-surface-variant">
+<div class="flex items-center gap-sm mb-md">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-md text-on-surface">Real-time Connection</span>
+</div>
+<div class="flex items-center gap-md p-sm bg-surface rounded-lg border border-surface-variant animate-pulse">
+<span class="material-symbols-outlined text-secondary">cloud_sync</span>
+<span class="font-body-md text-on-surface-variant">Syncing meeting metadata...</span>
+</div>
+</div>
+<div class="md:col-span-4 bg-surface-container-high p-md rounded-xl border border-surface-variant">
+<div class="flex items-center gap-sm mb-md">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-label-md text-on-surface">Storage Status</span>
+</div>
+<div class="flex items-center gap-md p-sm bg-error-container/10 rounded-lg border border-error-container">
+<span class="material-symbols-outlined text-error">database_off</span>
+<span class="font-body-md text-on-surface-variant">Cloud storage disconnected</span>
+</div>
+</div>
+<div class="md:col-span-4 bg-surface-container-high p-md rounded-xl border border-surface-variant">
+<div class="flex items-center gap-sm mb-md">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-md text-on-surface">Queue Status</span>
+</div>
+<div class="flex items-center gap-md p-sm bg-primary-container/10 rounded-lg border border-primary-container">
+<span class="material-symbols-outlined text-primary">hourglass_empty</span>
+<span class="font-body-md text-on-surface-variant">14 meetings in processing queue</span>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-sm pb-safe bg-surface-container border-t border-surface-variant rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sensors</span>
+<span class="font-label-md text-label-md">Live</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</button>
+</nav>
+<!-- Navigation Drawer (Desktop Placeholder) -->
+<aside class="hidden lg:flex fixed inset-y-0 left-0 z-[60] flex-col p-md gap-sm bg-surface-container-low border-r border-surface-variant w-64">
+<div class="mb-xl flex items-center gap-md px-md">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary">bolt</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm-mobile text-on-surface">Alex Rivers</h4>
+<p class="font-body-md text-body-md text-primary">Pro Plan</p>
+</div>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md">Personal Space</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md">Team Analytics</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg bg-primary-container text-on-primary-container font-semibold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">report</span>
+<span class="font-body-md">System States</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">video_library</span>
+<span class="font-body-md">Recordings</span>
+</a>
+<div class="mt-xl border-t border-surface-variant pt-md">
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md">Help Center</span>
+</a>
+</div>
+</nav>
+</aside>
+<script>
+        // Subtle interaction for retry button
+        document.querySelector('button.bg-error').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Retrying...';
+            btn.classList.add('opacity-50');
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('opacity-50');
+                btn.disabled = false;
+                alert('Retry initiated. Connection re-established.');
+            }, 2000);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,41 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+*.db
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Local meeting data (uploads, artifacts, live chunks)
+**/storage/uploads/
+**/storage/artifacts/
+**/storage/live/
+**/storage/meetings/
+*.wav
+*.mp4
+*.mov
+*.webm
+
+# Keep sample catalog only (no binary samples in git)
+!**/storage/samples/manifest.json
+
+# IDE
+.idea/
+.vscode/
+*.swp

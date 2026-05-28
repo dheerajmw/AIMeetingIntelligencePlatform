@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Meeting Detail - Q3 Budget Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0b1326; /* surface from config */
+            color: #dae2fd; /* on-surface from config */
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #334155;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#c0c1ff",
+                      "inverse-surface": "#dae2fd",
+                      "primary": "#c0c1ff",
+                      "secondary-fixed-dim": "#7bd0ff",
+                      "surface-tint": "#c0c1ff",
+                      "surface-variant": "#2d3449",
+                      "surface-bright": "#31394d",
+                      "surface-container": "#171f33",
+                      "on-secondary-container": "#00374d",
+                      "on-error": "#690005",
+                      "on-secondary": "#00354a",
+                      "on-primary": "#1000a9",
+                      "on-tertiary-fixed-variant": "#92002a",
+                      "on-surface-variant": "#c7c4d7",
+                      "surface-container-highest": "#2d3449",
+                      "error": "#ffb4ab",
+                      "on-surface": "#dae2fd",
+                      "tertiary-fixed": "#ffdadb",
+                      "on-secondary-fixed-variant": "#004c69",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "primary-container": "#8083ff",
+                      "secondary": "#7bd0ff",
+                      "on-secondary-fixed": "#001e2c",
+                      "on-primary-fixed": "#07006c",
+                      "surface-container-low": "#131b2e",
+                      "surface": "#0b1326",
+                      "inverse-primary": "#494bd6",
+                      "on-primary-container": "#0d0096",
+                      "on-tertiary": "#67001b",
+                      "tertiary-container": "#ff516a",
+                      "error-container": "#93000a",
+                      "tertiary": "#ffb2b7",
+                      "outline-variant": "#464554",
+                      "surface-dim": "#0b1326",
+                      "surface-container-high": "#222a3d",
+                      "surface-container-lowest": "#060e20",
+                      "outline": "#908fa0",
+                      "secondary-fixed": "#c4e7ff",
+                      "background": "#0b1326",
+                      "on-background": "#dae2fd",
+                      "secondary-container": "#00a6e0",
+                      "on-tertiary-container": "#5b0017",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#ffb2b7",
+                      "on-tertiary-fixed": "#40000d",
+                      "inverse-on-surface": "#283044",
+                      "primary-fixed": "#e1e0ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "gutter": "24px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "margin": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "code": ["jetbrainsMono"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "code": ["13px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface bg-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-md h-16 bg-surface border-b border-surface-variant">
+<div class="flex items-center gap-md">
+<button class="p-sm hover:bg-surface-container-highest transition-colors rounded-full">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="font-headline-sm-mobile font-bold text-on-surface">MeetIQ</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-sm hover:bg-surface-container-highest transition-colors rounded-full">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-primary">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvH5967tDcHToRPJDpC3k_2BBNnrcYLlOs8A8SHYatboXVuSYpk61XvwjYnwj6pEDbf5Cx32cn9z1bYMZ4b3IAgEVk6cmJ_DPoFqe_SDCFi5FSOAD-T1YNq8N34Dv8uzze4NzKjHYbD2Y7q2456kzsXRxIc6HuJoyOLJKtwyB7ie2YLtVZPftCY0ltGIhwLLpG4WgJKriSrsdtnDKfIEQYTe6zUrF1s08eCi9Rg169CQM7Z0BAFjhQ1oxealDjh1jkcFf8YWN5pGY"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-md max-w-7xl mx-auto space-y-lg">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div class="space-y-xs">
+<div class="flex items-center gap-sm text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span>October 24, 2023 • 10:00 AM - 11:30 AM</span>
+</div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Q3 Budget Review</h2>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-sm rounded border border-surface-variant hover:bg-surface-container-highest transition-all font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-[18px]">export_notes</span>
+                    EXPORT
+                </button>
+<button class="flex items-center gap-xs px-md py-sm rounded bg-[#6366F1] hover:bg-[#4f46e5] transition-all font-label-md text-label-md text-white">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                    SHARE
+                </button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex border-b border-surface-variant gap-lg">
+<button class="pb-md font-label-md text-label-md text-primary border-b-2 border-primary">Summary</button>
+<button class="pb-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors">Transcript</button>
+<button class="pb-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors">Actions &amp; Decisions</button>
+</div>
+<!-- Main Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Summary & Points -->
+<div class="lg:col-span-8 space-y-gutter">
+<!-- Executive Summary -->
+<section class="p-lg bg-[#1E293B] rounded-xl border border-[#334155] space-y-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">auto_awesome</span>
+<h3 class="font-headline-sm text-headline-sm text-secondary">Executive Summary</h3>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        The Q3 Budget Review focused on reallocating surplus from the operational logistics bucket toward high-impact R&amp;D initiatives. The team evaluated the performance of current marketing spend and concluded that a 15% reduction in traditional media could be shifted to product innovation without sacrificing lead generation targets. Overall, the company remains on track to meet annual profitability goals.
+                    </p>
+</section>
+<!-- Discussion Points -->
+<section class="p-lg bg-[#1E293B] rounded-xl border border-[#334155] space-y-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Discussion Points</h3>
+<ul class="space-y-md">
+<li class="flex gap-md">
+<div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+<p class="font-body-md text-body-md text-on-surface-variant">Review of the previous quarter's underspend in the travel and infrastructure categories.</p>
+</li>
+<li class="flex gap-md">
+<div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+<p class="font-body-md text-body-md text-on-surface-variant">Proposed $50,000 investment into the new AI-driven analytics module for the internal platform.</p>
+</li>
+<li class="flex gap-md">
+<div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+<p class="font-body-md text-body-md text-on-surface-variant">Potential risks associated with aggressive hiring in the engineering department for Q4.</p>
+</li>
+</ul>
+</section>
+<!-- Decisions Made -->
+<section class="p-lg bg-[#1E293B] rounded-xl border border-[#334155] space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Decisions Made</h3>
+<span class="px-md py-1 rounded-full bg-[rgba(16,185,129,0.1)] text-[#10B981] font-label-md text-label-md">FINALIZED</span>
+</div>
+<div class="p-md bg-surface-container rounded-lg border-l-4 border-[#10B981] space-y-sm">
+<p class="font-headline-sm text-headline-sm text-on-surface">Approved $50k for R&amp;D</p>
+<div class="flex gap-sm items-start italic text-on-surface-variant opacity-80">
+<span class="material-symbols-outlined text-[18px]">format_quote</span>
+<p class="font-body-md text-body-md">"The investment in R&amp;D is non-negotiable if we want to maintain our competitive edge in the automation space for the coming year."</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Actions & Details -->
+<div class="lg:col-span-4 space-y-gutter">
+<!-- Action Items -->
+<section class="p-lg bg-[#1E293B] rounded-xl border border-[#334155] space-y-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Action Items</h3>
+<div class="space-y-md">
+<!-- Item 1 -->
+<div class="p-md rounded-lg bg-surface-container border border-[#334155] space-y-sm">
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-sm">
+<input class="w-4 h-4 rounded border-outline bg-transparent text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md font-semibold text-on-surface">Update budget spreadsheet</span>
+</label>
+</div>
+<div class="flex items-center justify-between pt-xs border-t border-surface-variant">
+<div class="flex items-center gap-xs">
+<img alt="Sarah" class="w-5 h-5 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAodpmfJLcGTJiv6DuNIjDP5bXNyi-McfYzdzo8XoDG4RpA0sW3QsHX2X5y-3sieZznrXCL-mlc749SMEPsy6JeIQ2dKi7Zf_9Pxw58LuHx7UdA3XF0Xeg_BGG3IVkVYmSO700nOx3x-J6x9a__IZxZoNtWU2iLM0Q4wwP5C28aYh0vb_jUGJmeFnNcVIJytqILLLvLTQ6vLrMobziZnCxF_Y-GiLJkzZQNOEpvrSNy8siupDk_QtFmn9Gweu-cchYZ37sfDwEGi3c"/>
+<span class="font-label-md text-label-md text-on-surface-variant">Sarah</span>
+</div>
+<span class="font-label-md text-label-md text-tertiary">Due Oct 28</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-md rounded-lg bg-surface-container border border-[#334155] space-y-sm opacity-60">
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-sm">
+<input checked="" class="w-4 h-4 rounded border-outline bg-transparent text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md font-semibold text-on-surface line-through">Distribute Q2 report</span>
+</label>
+</div>
+<div class="flex items-center justify-between pt-xs border-t border-surface-variant">
+<div class="flex items-center gap-xs">
+<img alt="Marcus" class="w-5 h-5 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4A5L0kF-Zqd1M3R53wrVW4No34uN3_B-CV8uj-0uFLnHa5gnUfjimMPUSoXysO2h48O8eokQ37rSUH-F_9PkYHg11GYTJssVgkjLY0yGNMzoWTUhjhFl9j6y2B-w38cMHwauSniXZgYHni9kop82cjnPuZJuD7hnbiB-gdxltWzffoPPUZotVP3CZxVVyk41uVIjAFefMIbfFN3nBaI24y6Y093_wYHIBYyjAJx27QnBoXzkCgXHlgUQjFB5UHM-K-2LAfOMRklA"/>
+<span class="font-label-md text-label-md text-on-surface-variant">Marcus</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Done</span>
+</div>
+</div>
+</div>
+<button class="w-full py-sm rounded border border-dashed border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-highest transition-colors">
+                        + ADD ACTION ITEM
+                    </button>
+</section>
+<!-- Attendees -->
+<section class="p-lg bg-[#1E293B] rounded-xl border border-[#334155] space-y-md">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Attendees (5)</h3>
+<div class="flex -space-x-2">
+<img alt="Attendee" class="w-8 h-8 rounded-full border-2 border-[#1E293B]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7AOmsTJPHln5el7suGFnfNGuyhzUdsseSv4BaUDInKQz3f4kqBoxlGs1S88XCB2ejF2PBxl8hv1tNmy4YsyvXqvQo8CxmY3paKqTNz9MJVqYy1DEC-mcQ_ukxXMANX_EC972Rn-86L_dJXfWP2onywlV1n5tWXtn_Emm9qadLGfS2ihtrsoK2sT48vOoEL1aX3dtFeB5J8vyHkdzpV1UeWxcArWDzrQ0CgoPOogtbWqE8C5yk6yun80wKuAlLsHjelv8MxtLl-zQ"/>
+<img alt="Attendee" class="w-8 h-8 rounded-full border-2 border-[#1E293B]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5on93mFZ3xMQS8FRCnZLVf0EJa47LRhSPJwZHQAQl4xZ9WbDehbH8-xIkET1EmgdboHoEXuIm31r-jt0VO6KU9CyCMI8OQF0n7X2NEAAZsIrk84SIIwfqiu-94a3Rnz_cD_O4TpjFa8kq7E_w0mhM9SQerT4gAFsKSMBV87UsW5lP7cVCixAhZHFufPdhgL0iy0ufzGtVNhXosU2dJMUBnEkMtBt8JAzse-g8s7WppCR-uxjYoN3dgU88L2z2rx-U8XoKJRSumnY"/>
+<img alt="Attendee" class="w-8 h-8 rounded-full border-2 border-[#1E293B]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXgQ1cHPiol04xWBCjYlBe7OXIwoc8_NCfiHJiYa5LzF-bokDc4sRq5r_hG4vylrlO3_biaPGJvbhsMRTshKOIBfpGFhx2lWZMrvQt0_zzpE3eROY9uSqY07Ss4FaW8u7c9GdP7cWYIIfp50XGkVfXj2KX-vwHUle2lKsXFUdDM9ZZW5neB2QuGDBkd0A5vFA7KvdlmQfosYWe7ZpJJZRsQSiwk01lW_fhNSdi84yD5CRNYbJr71E6GbkUpW3BBXTYwuoMGJAsMnY"/>
+<img alt="Attendee" class="w-8 h-8 rounded-full border-2 border-[#1E293B]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKQsUkpxnhbJKInvkIDNv-0kMsTV2AZnUO-g2UJTPq2Vb_OAMrxH5O9Bxl8PP0f9aodtap1AO6dn9I30iflLHsc4hP5G8c38ZRNHq5y07mwye1cE1lwGasVzJpOv861-AOyt4_LbnPHCQhWZmkkL-cALMLTtT36Li96uXofKelr0GEPoivNpCSgwObU250s8gQwekNIUx8Hu9AHwn6-cwJ-kwpGGuQ3G5RsSwTfggOzp3SWuFNYYI4tnwRiAQosw0xGHWweVsTul4"/>
+<div class="w-8 h-8 rounded-full border-2 border-[#1E293B] bg-surface-container-highest flex items-center justify-center font-label-md text-label-md">+1</div>
+</div>
+</section>
+<!-- Meeting Insights -->
+<div class="p-lg bg-gradient-to-br from-primary-container to-secondary-container rounded-xl text-on-primary-container space-y-sm">
+<span class="material-symbols-outlined">insights</span>
+<p class="font-headline-sm text-headline-sm">Sentiment Score: 88%</p>
+<p class="font-body-md text-body-md opacity-90">The meeting had a highly collaborative tone. Engagement was highest during the R&amp;D funding discussion.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-sm pb-safe bg-surface-container border-t border-surface-variant rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md">Meetings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-label-md text-label-md">Live</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined">extension</span>
+<span class="font-label-md text-label-md">Integrations</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<!-- Visual Atmosphere: Subtle Gradient Glows -->
+<div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+<script>
+        // Micro-interactions for tab switching (mock)
+        const tabs = document.querySelectorAll('button[class*="pb-md"]');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('text-primary', 'border-b-2', 'border-primary');
+                    t.classList.add('text-on-surface-variant');
+                });
+                tab.classList.remove('text-on-surface-variant');
+                tab.classList.add('text-primary', 'border-b-2', 'border-primary');
+            });
+        });
+    </script>
+</body></html>

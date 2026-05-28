@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MeetIQ - Meetings List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c0c1ff",
+                        "inverse-surface": "#dae2fd",
+                        "primary": "#c0c1ff",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "surface-tint": "#c0c1ff",
+                        "surface-variant": "#2d3449",
+                        "surface-bright": "#31394d",
+                        "surface-container": "#171f33",
+                        "on-secondary-container": "#00374d",
+                        "on-error": "#690005",
+                        "on-secondary": "#00354a",
+                        "on-primary": "#1000a9",
+                        "on-tertiary-fixed-variant": "#92002a",
+                        "on-surface-variant": "#c7c4d7",
+                        "surface-container-highest": "#2d3449",
+                        "error": "#ffb4ab",
+                        "on-surface": "#dae2fd",
+                        "tertiary-fixed": "#ffdadb",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "primary-container": "#8083ff",
+                        "secondary": "#7bd0ff",
+                        "on-secondary-fixed": "#001e2c",
+                        "on-primary-fixed": "#07006c",
+                        "surface-container-low": "#131b2e",
+                        "surface": "#0b1326",
+                        "inverse-primary": "#494bd6",
+                        "on-primary-container": "#0d0096",
+                        "on-tertiary": "#67001b",
+                        "tertiary-container": "#ff516a",
+                        "error-container": "#93000a",
+                        "tertiary": "#ffb2b7",
+                        "outline-variant": "#464554",
+                        "surface-dim": "#0b1326",
+                        "surface-container-high": "#222a3d",
+                        "surface-container-lowest": "#060e20",
+                        "outline": "#908fa0",
+                        "secondary-fixed": "#c4e7ff",
+                        "background": "#0b1326",
+                        "on-background": "#dae2fd",
+                        "secondary-container": "#00a6e0",
+                        "on-tertiary-container": "#5b0017",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "on-tertiary-fixed": "#40000d",
+                        "inverse-on-surface": "#283044",
+                        "primary-fixed": "#e1e0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "code": ["jetbrainsMono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "code": ["13px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0F172A; }
+        .meeting-card { background-color: #1E293B; border: 1px solid #334155; }
+        .search-field { background-color: #1E293B; border: 1px solid #334155; }
+        .search-field:focus-within { border-color: #6366F1; box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2); }
+        .btn-primary { background-color: #6366F1; color: white; border-radius: 4px; }
+        .btn-secondary { border: 1px solid #334155; color: #F8FAFC; border-radius: 4px; }
+        .badge-ready { background: rgba(16, 185, 129, 0.1); color: #10B981; }
+        .badge-processing { background: rgba(245, 158, 11, 0.1); color: #F59E0B; }
+        .badge-failed { background: rgba(239, 68, 68, 0.1); color: #EF4444; }
+        .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-md h-16 bg-surface border-b border-surface-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<h1 class="font-headline-sm font-bold text-on-surface">MeetIQ</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center gap-lg mr-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">Dashboard</a>
+<a class="text-primary font-label-md font-bold" href="#">Meetings</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">Live</a>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Profile" data-alt="A professional close-up portrait of a tech executive with a friendly expression. The lighting is dramatic with cool blue rim lights against a dark, tech-oriented office background. The overall aesthetic is sleek and corporate, matching a high-end SaaS platform interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiW8vr4_mQVGiDlceRjSPbuTX-C-_rMuotnDEnnFI9MO-4t1vbD6tiEWgQvmwt7eUDdflw9VHH-NVwoVLPexZ4ah03QWm022pgyl0gjLyihdcf9HQ6JFWfhkz7Sv41yLOeU1NvR9cF1K4m_WRhwvF9MANtDHPXzAUSpXydFZiU8UNhV7gorbVaJtBNVIpc7uT68avnQPHmEpUk41UspcjkQ6nHacZOOuayp_yuZyyI-0-IyXWcMy6jSndCJghE6peWGNc9Uuq_xNw"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-md md:px-xl max-w-7xl mx-auto min-h-screen">
+<!-- Header & Search Section -->
+<section class="mb-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md mb-lg">
+<div>
+<h2 class="font-headline-md text-on-surface mb-xs">Meeting History</h2>
+<p class="text-on-surface-variant font-body-md">Manage and review your transcribed conversations.</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="btn-secondary px-md py-sm flex items-center gap-sm hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-label-md">Last 30 Days</span>
+</button>
+</div>
+</div>
+<!-- Search and Filter Bar -->
+<div class="flex flex-col lg:flex-row gap-md items-start lg:items-center">
+<div class="search-field w-full lg:max-w-md flex items-center px-md py-sm rounded-lg transition-all">
+<span class="material-symbols-outlined text-outline mr-sm">search</span>
+<input class="bg-transparent border-none outline-none text-on-surface w-full font-body-md placeholder:text-outline-variant" placeholder="Search meetings by title or content..." type="text"/>
+</div>
+<div class="flex flex-wrap gap-xs p-1 bg-surface-container-low rounded-lg">
+<button class="px-lg py-sm rounded-md font-label-md bg-primary-container text-on-primary-container">All</button>
+<button class="px-lg py-sm rounded-md font-label-md text-on-surface-variant hover:bg-surface-variant transition-colors">Ready</button>
+<button class="px-lg py-sm rounded-md font-label-md text-on-surface-variant hover:bg-surface-variant transition-colors">Processing</button>
+<button class="px-lg py-sm rounded-md font-label-md text-on-surface-variant hover:bg-surface-variant transition-colors">Failed</button>
+</div>
+</div>
+</section>
+<!-- Meeting Cards Grid (Asymmetric / Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter">
+<!-- Featured / Large Card -->
+<div class="meeting-card lg:col-span-8 p-lg rounded-xl flex flex-col justify-between group cursor-pointer hover:border-primary transition-all">
+<div class="flex justify-between items-start mb-lg">
+<div class="flex items-center gap-md">
+<div class="p-md rounded-lg bg-primary-container/20 text-primary">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-on-surface group-hover:text-primary transition-colors">Project Phoenix Sync</h3>
+<p class="text-on-surface-variant text-body-md">Oct 24, 2023 • 45 mins</p>
+</div>
+</div>
+<span class="badge-ready px-sm py-xs rounded-full text-label-md font-bold uppercase tracking-wider">Ready</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-md mb-lg">
+<div class="bg-surface-container-highest/30 p-md rounded-lg">
+<span class="text-on-surface-variant text-label-md uppercase mb-xs block">Actions</span>
+<span class="text-headline-sm font-bold text-on-surface">12</span>
+</div>
+<div class="bg-surface-container-highest/30 p-md rounded-lg">
+<span class="text-on-surface-variant text-label-md uppercase mb-xs block">Decisions</span>
+<span class="text-headline-sm font-bold text-on-surface">05</span>
+</div>
+<div class="hidden md:block bg-surface-container-highest/30 p-md rounded-lg">
+<span class="text-on-surface-variant text-label-md uppercase mb-xs block">Sentiment</span>
+<span class="text-headline-sm font-bold text-secondary">Positive</span>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-surface-variant pt-md">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Avatar of a male professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0IWLoy6uuqBISe39yUnbSfZuZmQTQ3wjG-A3u8NBiUOTewvZjm58voVbaCaHrjR_rFN58pUAW7OfKgW8npBMwRd7J7_CBHrjGt6GZGpjP2L8T_NJRur4qyExHwRDnZZu7NpnXrScDWPXW6gRTbdYSy6866m7JjyV16IDJdvo43tWNqLolRX9g2KSiN10WcO0Do4hTzoXIMa6vhbwS8VKrLeE_QS1WUejk1nWmaV1DKJYmPWVvglPjiOFiCA-_wMTdtZOAoVakS4w"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Avatar of a female professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkVlcK_BSgqcS7Y4dGMGvihvsIVJ1U6WgDuFEchddyOCs9FHYXr7-pOYagKLnXu2xlwFej4yyieG_1RTb_gQrCWD5vbDRbv5loVKM8Gdg8J9_bOWsGvM9SCjI3yrJcwt5C_8vTFfeL-4awXntI9hH_3PD3U-mKc6dlZ47Kq_GFPhTod6GoGOVIolu6cvD_9RzicopQ5nmErwUSbt_vNqZtalE0FihsR5LLPHeQb-rTLMy5B3cDLfSWUc5k5uHGE2xFTZI6znsYRC4"/>
+<div class="w-8 h-8 rounded-full bg-surface-variant border-2 border-surface flex items-center justify-center text-label-md text-on-surface-variant">+3</div>
+</div>
+<button class="text-primary font-label-md flex items-center gap-xs">
+                        View Report <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Side Card 1 -->
+<div class="meeting-card lg:col-span-4 p-lg rounded-xl flex flex-col cursor-pointer hover:border-primary transition-all">
+<div class="flex justify-between items-start mb-md">
+<span class="badge-ready px-sm py-xs rounded-full text-label-md font-bold uppercase tracking-wider">Ready</span>
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</div>
+<h3 class="font-headline-sm text-on-surface mb-xs">Q3 Budget Review</h3>
+<p class="text-on-surface-variant text-body-md mb-lg">Oct 23, 2023 • 60 mins</p>
+<div class="mt-auto flex items-center gap-md">
+<span class="material-symbols-outlined text-outline">description</span>
+<span class="text-on-surface-variant text-body-md">Summary Generated</span>
+</div>
+</div>
+<!-- Side Card 2 (Processing) -->
+<div class="meeting-card lg:col-span-4 p-lg rounded-xl flex flex-col cursor-pointer border-dashed border-2">
+<div class="flex justify-between items-start mb-md">
+<span class="badge-processing px-sm py-xs rounded-full text-label-md font-bold uppercase tracking-wider">Processing</span>
+<span class="material-symbols-outlined text-on-surface-variant">hourglass_empty</span>
+</div>
+<h3 class="font-headline-sm text-on-surface mb-xs opacity-60">Product Roadmap</h3>
+<p class="text-on-surface-variant text-body-md mb-lg">Oct 22, 2023 • 30 mins</p>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden mt-auto">
+<div class="bg-secondary h-full transition-all duration-1000" style="width: 65%;"></div>
+</div>
+<span class="text-label-md text-secondary mt-xs">Analyzing audio... 65%</span>
+</div>
+<!-- Long Horizontal Card (Failed) -->
+<div class="meeting-card lg:col-span-8 p-lg rounded-xl flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">report_problem</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-on-surface">Team Sync</h3>
+<p class="text-on-surface-variant text-body-md">Oct 21, 2023 • Connection lost at 12:04</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-sm">
+<span class="badge-failed px-sm py-xs rounded-full text-label-md font-bold uppercase tracking-wider">Failed</span>
+<button class="text-primary font-label-md flex items-center gap-xs">Retry Analysis</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<footer class="mt-xl flex items-center justify-between">
+<p class="text-on-surface-variant text-body-md">Showing <span class="text-on-surface font-bold">1-4</span> of 48 meetings</p>
+<div class="flex items-center gap-xs">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-surface-variant hover:bg-surface-variant transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-container text-on-primary-container font-label-md">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-variant text-on-surface transition-colors font-label-md">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-variant text-on-surface transition-colors font-label-md">3</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</footer>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 md:bottom-10 md:right-10 w-14 h-14 rounded-full bg-primary text-on-primary shadow-xl flex items-center justify-center group hover:scale-105 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-[32px] group-hover:rotate-90 transition-transform">add</span>
+</button>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-sm pb-safe bg-surface-container border-t border-surface-variant rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 duration-200">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md">Meetings</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-label-md">Live</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all">
+<span class="material-symbols-outlined">extension</span>
+<span class="font-label-md">Integrations</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md">Settings</span>
+</button>
+</nav>
+<!-- Visual Polish: Background Aura -->
+<div class="fixed top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
+<div class="fixed bottom-0 left-0 w-[300px] h-[300px] bg-secondary/5 blur-[100px] rounded-full -z-10 pointer-events-none"></div>
+<script>
+        // Simple micro-interaction for processing card
+        const progressBar = document.querySelector('.bg-secondary');
+        let progress = 65;
+        setInterval(() => {
+            progress = progress >= 95 ? 65 : progress + 0.5;
+            if (progressBar) {
+                progressBar.style.width = progress + '%';
+            }
+        }, 100);
+    </script>
+</body></html>

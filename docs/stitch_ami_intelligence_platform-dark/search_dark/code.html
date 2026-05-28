@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MeetIQ - Search Knowledge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c0c1ff",
+                    "inverse-surface": "#dae2fd",
+                    "primary": "#c0c1ff",
+                    "secondary-fixed-dim": "#7bd0ff",
+                    "surface-tint": "#c0c1ff",
+                    "surface-variant": "#2d3449",
+                    "surface-bright": "#31394d",
+                    "surface-container": "#171f33",
+                    "on-secondary-container": "#00374d",
+                    "on-error": "#690005",
+                    "on-secondary": "#00354a",
+                    "on-primary": "#1000a9",
+                    "on-tertiary-fixed-variant": "#92002a",
+                    "on-surface-variant": "#c7c4d7",
+                    "surface-container-highest": "#2d3449",
+                    "error": "#ffb4ab",
+                    "on-surface": "#dae2fd",
+                    "tertiary-fixed": "#ffdadb",
+                    "on-secondary-fixed-variant": "#004c69",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "primary-container": "#8083ff",
+                    "secondary": "#7bd0ff",
+                    "on-secondary-fixed": "#001e2c",
+                    "on-primary-fixed": "#07006c",
+                    "surface-container-low": "#131b2e",
+                    "surface": "#0b1326",
+                    "inverse-primary": "#494bd6",
+                    "on-primary-container": "#0d0096",
+                    "on-tertiary": "#67001b",
+                    "tertiary-container": "#ff516a",
+                    "error-container": "#93000a",
+                    "tertiary": "#ffb2b7",
+                    "outline-variant": "#464554",
+                    "surface-dim": "#0b1326",
+                    "surface-container-high": "#222a3d",
+                    "surface-container-lowest": "#060e20",
+                    "outline": "#908fa0",
+                    "secondary-fixed": "#c4e7ff",
+                    "background": "#0b1326",
+                    "on-background": "#dae2fd",
+                    "secondary-container": "#00a6e0",
+                    "on-tertiary-container": "#5b0017",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#ffb2b7",
+                    "on-tertiary-fixed": "#40000d",
+                    "inverse-on-surface": "#283044",
+                    "primary-fixed": "#e1e0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "margin": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "code": ["jetbrainsMono"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "code": ["13px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0F172A; /* Requested Background */
+            color: #dae2fd;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #334155;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-md h-16 bg-surface dark:bg-surface border-b border-surface-variant dark:border-surface-variant">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-primary hover:bg-surface-container-highest transition-colors p-2 rounded-full">menu</button>
+<h1 class="font-headline-sm-mobile text-headline-sm-mobile font-bold text-on-surface dark:text-on-surface">MeetIQ</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-primary dark:text-primary hover:bg-surface-container-highest transition-colors p-2 rounded-full">notifications</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-24 pb-32 px-margin max-w-7xl mx-auto">
+<!-- Search Section -->
+<section class="mb-xl animate-fade-in">
+<h2 class="font-headline-lg text-headline-lg mb-lg text-on-surface">Search Knowledge</h2>
+<div class="relative group">
+<div class="absolute inset-y-0 left-md flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="w-full h-16 pl-14 pr-md bg-[#1E293B] border border-[#334155] rounded-xl text-body-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-outline-variant outline-none" placeholder="Search through meetings, docs, and insights..." type="text"/>
+<div class="absolute inset-y-0 right-md flex items-center gap-sm">
+<kbd class="hidden md:inline-flex items-center px-2 py-1 font-code text-label-md bg-surface-container-highest border border-outline-variant rounded text-on-surface-variant">⌘ K</kbd>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout for Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Quick Insights (Asymmetric Bento) -->
+<div class="md:col-span-8 flex flex-col gap-gutter">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm">Quick Insights</h3>
+<button class="text-primary font-label-md hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-md">
+<!-- Budgets -->
+<div class="glass-card p-md rounded-xl hover:scale-[1.02] transition-transform cursor-pointer flex flex-col gap-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface-variant">Budgets</p>
+<p class="font-headline-sm">Q4 Allocations</p>
+</div>
+</div>
+<!-- Launches -->
+<div class="glass-card p-md rounded-xl hover:scale-[1.02] transition-transform cursor-pointer flex flex-col gap-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface-variant">Launches</p>
+<p class="font-headline-sm">v2.4 Release</p>
+</div>
+</div>
+<!-- Owners -->
+<div class="glass-card p-md rounded-xl hover:scale-[1.02] transition-transform cursor-pointer flex flex-col gap-sm">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">group</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface-variant">Owners</p>
+<p class="font-headline-sm">Project Leads</p>
+</div>
+</div>
+</div>
+<!-- Empty State Placeholder Graphic -->
+<div class="mt-lg p-xl border-2 border-dashed border-[#334155] rounded-xl flex flex-col items-center justify-center text-center bg-surface-container-low/30 min-h-[320px]">
+<div class="relative w-48 h-48 mb-md">
+<img alt="Search Knowledge" class="w-full h-full object-contain mix-blend-lighten opacity-40" data-alt="A stylized 3D digital illustration of a glowing holographic search bar floating in a deep dark space with binary code raining down in the background. The aesthetic is clean and futuristic, using a palette of deep slate, indigo, and bright electric blue. The lighting is moody with soft glowing edges on geometric shapes, conveying a sense of vast data and sophisticated technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9IxTbpIj0wSeYdV9xipkV-d7y4KcTTfTHvTqF6GIpdySvFt2x6JhccqxofEIguJOIkTvnP7eR-9jx0rf8ppcuYEGrpO0n9Aq5kWZMj6UNAVZBHZKIuvtGbRg9bpLQ2yhVbreMJnmgMvJ5AxBlJxRsYF-mno0HHircIUxlPYiclN1ym02XDoDLbNiKPqaT6jXVDNTuXO-F5F--xEbcUskDvmRpTiv1iWuD6hk4uMwPoi9DMxk_OMWD8uXqodTgEtvIQiRLpWqlELY"/>
+</div>
+<h4 class="font-headline-sm text-on-surface">Start Typing to Discover</h4>
+<p class="text-on-surface-variant max-w-sm mt-sm">Ask anything about your past meetings, documents, or team discussions. We'll surface the exact moments you need.</p>
+</div>
+</div>
+<!-- Recent Searches Sidebar -->
+<div class="md:col-span-4">
+<div class="glass-card p-lg rounded-xl h-full">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-label-md text-on-surface-variant uppercase tracking-wider">Recent Searches</h3>
+<span class="material-symbols-outlined text-outline-variant text-sm">history</span>
+</div>
+<ul class="space-y-xs">
+<li>
+<button class="w-full flex items-center justify-between p-md rounded-lg hover:bg-surface-variant transition-colors group">
+<span class="text-body-md text-on-surface group-hover:text-primary transition-colors">Q4 Product Roadmap</span>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">arrow_outward</span>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center justify-between p-md rounded-lg hover:bg-surface-variant transition-colors group">
+<span class="text-body-md text-on-surface group-hover:text-primary transition-colors">Marketing budget 2024</span>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">arrow_outward</span>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center justify-between p-md rounded-lg hover:bg-surface-variant transition-colors group">
+<span class="text-body-md text-on-surface group-hover:text-primary transition-colors">Hiring plan updates</span>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">arrow_outward</span>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center justify-between p-md rounded-lg hover:bg-surface-variant transition-colors group">
+<span class="text-body-md text-on-surface group-hover:text-primary transition-colors">API Documentation v2</span>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">arrow_outward</span>
+</button>
+</li>
+</ul>
+<div class="mt-xl pt-lg border-t border-surface-variant">
+<p class="font-label-md text-on-surface-variant mb-md uppercase tracking-wider">Suggested for you</p>
+<div class="flex flex-wrap gap-sm">
+<span class="px-3 py-1 bg-surface-container-highest border border-outline-variant rounded-full text-label-md text-on-surface-variant hover:border-primary cursor-pointer transition-colors">Performance metrics</span>
+<span class="px-3 py-1 bg-surface-container-highest border border-outline-variant rounded-full text-label-md text-on-surface-variant hover:border-primary cursor-pointer transition-colors">Design system</span>
+<span class="px-3 py-1 bg-surface-container-highest border border-outline-variant rounded-full text-label-md text-on-surface-variant hover:border-primary cursor-pointer transition-colors">User interviews</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-sm pb-safe bg-surface-container dark:bg-surface-container border-t border-surface-variant dark:border-surface-variant rounded-t-xl md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-on-surface dark:hover:text-on-surface transition-all">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-on-surface dark:hover:text-on-surface transition-all">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md">Meetings</span>
+</div>
+<!-- Live as pseudo-active for search context -->
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary-container text-on-secondary-container dark:text-on-secondary-container rounded-full px-4 py-1 scale-90 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sensors</span>
+<span class="font-label-md text-label-md">Live</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-on-surface dark:hover:text-on-surface transition-all">
+<span class="material-symbols-outlined">extension</span>
+<span class="font-label-md text-label-md">Integrations</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-on-surface dark:hover:text-on-surface transition-all">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</div>
+</nav>
+<!-- Desktop Navigation Drawer (Hidden on mobile) -->
+<aside class="hidden md:flex fixed inset-y-0 left-0 z-[60] flex-col p-md gap-sm bg-surface-container-low dark:bg-surface-container-low h-full w-80 rounded-r-xl border-r border-surface-variant dark:border-surface-variant shadow-xl dark:shadow-none">
+<div class="mb-lg px-sm">
+<h1 class="font-headline-md font-bold text-primary">MeetIQ</h1>
+<div class="mt-md flex items-center gap-md p-md rounded-lg bg-surface-container-high/50">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">AR</div>
+<div class="flex flex-col">
+<span class="font-headline-sm-mobile text-headline-sm-mobile text-on-surface">Alex Rivers</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Pro Plan</span>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-xs flex-1">
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">person</span>
+<span>Personal Space</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">analytics</span>
+<span>Team Analytics</span>
+</a>
+<a class="flex items-center gap-md p-md bg-primary-container dark:bg-primary-container text-on-primary-container dark:text-on-primary-container font-semibold rounded-lg translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span>Search Knowledge</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">video_library</span>
+<span>Recordings Library</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">hub</span>
+<span>Shared Insights</span>
+</a>
+</nav>
+<div class="mt-auto px-sm">
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Help Center</span>
+</a>
+</div>
+</aside>
+<!-- Overlay logic for Sidebar on mobile if toggled -->
+<div class="fixed inset-0 bg-black/50 z-[55] hidden transition-opacity" id="sidebar-overlay"></div>
+<script>
+        // Simple micro-interaction for search focus
+        const searchInput = document.querySelector('input[type="text"]');
+        const emptyState = document.querySelector('.min-h-\\[320px\\]');
+        
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+        });
+
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+        });
+
+        // Toggle Sidebar on Mobile (Mockup)
+        const menuBtn = document.querySelector('.material-symbols-outlined:first-child');
+        const drawer = document.querySelector('aside');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        if (menuBtn && window.innerWidth < 768) {
+            menuBtn.addEventListener('click', () => {
+                drawer.classList.toggle('hidden');
+                overlay.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body></html>

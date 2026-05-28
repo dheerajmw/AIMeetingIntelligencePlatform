@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c0c1ff",
+                        "inverse-surface": "#dae2fd",
+                        "primary": "#c0c1ff",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "surface-tint": "#c0c1ff",
+                        "surface-variant": "#2d3449",
+                        "surface-bright": "#31394d",
+                        "surface-container": "#171f33",
+                        "on-secondary-container": "#00374d",
+                        "on-error": "#690005",
+                        "on-secondary": "#00354a",
+                        "on-primary": "#1000a9",
+                        "on-tertiary-fixed-variant": "#92002a",
+                        "on-surface-variant": "#c7c4d7",
+                        "surface-container-highest": "#2d3449",
+                        "error": "#ffb4ab",
+                        "on-surface": "#dae2fd",
+                        "tertiary-fixed": "#ffdadb",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "primary-container": "#8083ff",
+                        "secondary": "#7bd0ff",
+                        "on-secondary-fixed": "#001e2c",
+                        "on-primary-fixed": "#07006c",
+                        "surface-container-low": "#131b2e",
+                        "surface": "#0b1326",
+                        "inverse-primary": "#494bd6",
+                        "on-primary-container": "#0d0096",
+                        "on-tertiary": "#67001b",
+                        "tertiary-container": "#ff516a",
+                        "error-container": "#93000a",
+                        "tertiary": "#ffb2b7",
+                        "outline-variant": "#464554",
+                        "surface-dim": "#0b1326",
+                        "surface-container-high": "#222a3d",
+                        "surface-container-lowest": "#060e20",
+                        "outline": "#908fa0",
+                        "secondary-fixed": "#c4e7ff",
+                        "background": "#0b1326",
+                        "on-background": "#dae2fd",
+                        "secondary-container": "#00a6e0",
+                        "on-tertiary-container": "#5b0017",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "on-tertiary-fixed": "#40000d",
+                        "inverse-on-surface": "#283044",
+                        "primary-fixed": "#e1e0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "code": ["jetbrainsMono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "code": ["13px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0b1326; color: #dae2fd; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .audio-pulse { animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { height: 12px; opacity: 0.5; } 50% { height: 32px; opacity: 1; } }
+        .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(51, 65, 85, 0.5); }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="dark selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-md h-16 bg-surface dark:bg-surface border-b border-surface-variant dark:border-surface-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+<h1 class="font-headline-sm text-headline-sm font-bold text-on-surface">MeetIQ</h1>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<div class="flex items-center gap-sm px-md py-xs bg-surface-container rounded-full border border-surface-variant">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Live: Q3 Strategy Alignment</span>
+</div>
+<span class="font-code text-code text-primary opacity-80">00:42:15</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-tertiary-container text-on-tertiary-container px-md py-sm rounded-lg font-label-md text-label-md hover:bg-tertiary transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="stop_circle">stop_circle</span>
+                Stop &amp; Finalize
+            </button>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</div>
+</header>
+<!-- Main Content Grid -->
+<main class="pt-24 pb-24 md:pb-8 px-md md:px-lg max-w-[1600px] mx-auto min-h-screen">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- LEFT COLUMN: Live Feed & Visualizer (6 cols) -->
+<div class="md:col-span-7 flex flex-col gap-gutter">
+<!-- Audio Visualization Card -->
+<div class="bg-[#1E293B] border border-[#334155] rounded-xl p-lg flex flex-col items-center justify-center min-h-[280px] relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary to-transparent"></div>
+</div>
+<div class="flex items-end gap-1 h-16 mb-md">
+<div class="w-1.5 bg-primary rounded-full audio-pulse" style="animation-delay: 0.1s"></div>
+<div class="w-1.5 bg-primary rounded-full audio-pulse" style="animation-delay: 0.3s"></div>
+<div class="w-1.5 bg-primary rounded-full audio-pulse" style="animation-delay: 0.5s"></div>
+<div class="w-1.5 bg-primary rounded-full audio-pulse" style="animation-delay: 0.2s"></div>
+<div class="w-1.5 bg-primary rounded-full audio-pulse" style="animation-delay: 0.4s"></div>
+<div class="w-1.5 bg-primary rounded-full audio-pulse" style="animation-delay: 0.6s"></div>
+<div class="w-1.5 bg-primary rounded-full audio-pulse" style="animation-delay: 0.15s"></div>
+<div class="w-1.5 bg-primary rounded-full audio-pulse" style="animation-delay: 0.35s"></div>
+<div class="w-1.5 bg-primary rounded-full audio-pulse" style="animation-delay: 0.55s"></div>
+<div class="w-1.5 bg-primary rounded-full audio-pulse" style="animation-delay: 0.25s"></div>
+</div>
+<div class="text-center z-10">
+<p class="font-headline-sm text-headline-sm text-on-surface mb-xs">Active Speaker: Sarah Jenkins</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Director of Product Strategy</p>
+</div>
+<div class="flex gap-md mt-lg">
+<button class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined" data-icon="videocam">videocam</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined" data-icon="present_to_all">present_to_all</span>
+</button>
+</div>
+</div>
+<!-- Live Transcript Feed -->
+<div class="bg-[#1E293B] border border-[#334155] rounded-xl flex flex-col flex-grow min-h-[400px]">
+<div class="p-md border-b border-[#334155] flex justify-between items-center bg-surface-container-low rounded-t-xl">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="segment">segment</span>
+<h2 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Live Transcript</h2>
+</div>
+<span class="font-label-md text-label-md text-primary bg-primary-container/20 px-sm py-0.5 rounded">REAL-TIME</span>
+</div>
+<div class="p-md space-y-md overflow-y-auto custom-scrollbar h-[320px]" id="transcript-container">
+<div class="flex gap-md">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex-shrink-0 flex items-center justify-center font-bold text-on-secondary-container text-xs">SJ</div>
+<div>
+<p class="font-label-md text-label-md text-secondary">Sarah Jenkins <span class="text-on-surface-variant/50 ml-2 font-normal">10:42 AM</span></p>
+<p class="font-body-md text-body-md text-on-surface mt-1">So, when we look at the Q3 roadmap, we really need to prioritize the integration with the new API endpoints before the marketing push.</p>
+</div>
+</div>
+<div class="flex gap-md opacity-80">
+<div class="w-8 h-8 rounded-full bg-tertiary-container flex-shrink-0 flex items-center justify-center font-bold text-on-tertiary-container text-xs">MK</div>
+<div>
+<p class="font-label-md text-label-md text-tertiary">Marcus Klein <span class="text-on-surface-variant/50 ml-2 font-normal">10:43 AM</span></p>
+<p class="font-body-md text-body-md text-on-surface mt-1">I agree. If we don't have that stable by August 15th, the campaign will suffer from high latency issues.</p>
+</div>
+</div>
+<div class="flex gap-md animate-pulse">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex-shrink-0 flex items-center justify-center font-bold text-on-secondary-container text-xs">SJ</div>
+<div>
+<p class="font-label-md text-label-md text-secondary">Sarah Jenkins <span class="text-on-surface-variant/50 ml-2 font-normal">10:44 AM</span></p>
+<p class="font-body-md text-body-md text-on-surface mt-1 italic">Typing... "Who is responsible for the final documentation?"</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Insights & Actions (5 cols) -->
+<div class="md:col-span-5 flex flex-col gap-gutter">
+<!-- Live Summary Block (Draft) -->
+<div class="bg-[#1E293B] border border-[#334155] rounded-xl p-lg relative overflow-hidden">
+<div class="absolute top-4 right-4 bg-primary/10 text-primary px-sm py-1 rounded font-label-md text-[10px] border border-primary/20">DRAFTING</div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
+<h2 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Live Summary</h2>
+</div>
+<div class="space-y-md">
+<div class="p-md bg-surface-container-highest/30 rounded-lg border-l-4 border-primary">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                                Discussion is currently centered on the <strong class="text-primary-fixed-dim">Q3 Technical Roadmap</strong> and mitigating latency risks associated with the upcoming API migration. Marcus flagged a critical deadline for <strong class="text-secondary-fixed-dim">August 15th</strong>.
+                            </p>
+</div>
+<ul class="space-y-xs">
+<li class="flex items-start gap-sm text-body-md text-on-surface-variant">
+<span class="text-primary mt-1">•</span>
+<span>Agreement reached on API integration priority.</span>
+</li>
+<li class="flex items-start gap-sm text-body-md text-on-surface-variant">
+<span class="text-primary mt-1">•</span>
+<span>Marketing campaign linked to technical stability.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Emerging Action Items (Draft) -->
+<div class="bg-[#1E293B] border border-[#334155] rounded-xl flex flex-col flex-grow">
+<div class="p-md border-b border-[#334155] flex items-center gap-sm bg-surface-container-low rounded-t-xl">
+<span class="material-symbols-outlined text-secondary" data-icon="checklist">checklist</span>
+<h2 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Action Items</h2>
+<span class="ml-auto text-on-surface-variant/50 font-label-md text-label-md">3 DETECTED</span>
+</div>
+<div class="p-md space-y-sm">
+<!-- Action Item 1 -->
+<div class="group flex items-center justify-between p-md bg-surface-container rounded-lg border border-transparent hover:border-secondary transition-all cursor-pointer">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary" data-icon="circle">circle</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Audit API Endpoints</p>
+<p class="font-label-md text-[11px] text-on-surface-variant">Assigned to: <span class="text-secondary">Marcus Klein</span></p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/30" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Action Item 2 -->
+<div class="group flex items-center justify-between p-md bg-surface-container rounded-lg border border-transparent hover:border-secondary transition-all cursor-pointer">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary" data-icon="circle">circle</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Finalize Documentation Plan</p>
+<p class="font-label-md text-[11px] text-on-surface-variant">Assigned to: <span class="text-secondary">Unassigned</span></p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/30" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Action Item 3 -->
+<div class="group flex items-center justify-between p-md bg-surface-container rounded-lg border border-transparent border-dashed border-[#334155] opacity-60">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="pending">pending</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Sync with Marketing Ops...</p>
+<p class="font-label-md text-[11px] text-on-surface-variant italic">Extracting details...</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-auto p-md border-t border-[#334155]">
+<button class="w-full py-sm bg-surface-variant hover:bg-surface-container-highest transition-colors rounded-lg font-label-md text-label-md text-on-surface border border-[#334155] flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                            Add Manual Task
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only visibility handled by logic) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-sm pb-safe bg-surface-container dark:bg-surface-container border-t border-surface-variant dark:border-surface-variant rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md">Meetings</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary-container text-on-secondary-container dark:text-on-secondary-container rounded-full px-4 py-1 scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+<span class="font-label-md text-label-md">Live</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined" data-icon="extension">extension</span>
+<span class="font-label-md text-label-md">Integrations</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</div>
+</nav>
+<!-- Visual Background Element -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
+<div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-secondary/5 blur-[120px]"></div>
+</div>
+<script>
+        // Simulate Transcript Auto-Scrolling
+        const transcriptContainer = document.getElementById('transcript-container');
+        setInterval(() => {
+            if (transcriptContainer) {
+                transcriptContainer.scrollTop = transcriptContainer.scrollHeight;
+            }
+        }, 5000);
+
+        // Add visual micro-interaction for action items
+        document.querySelectorAll('.group').forEach(item => {
+            item.addEventListener('click', () => {
+                const icon = item.querySelector('.material-symbols-outlined:first-child');
+                if (icon && icon.innerText === 'circle') {
+                    icon.innerText = 'check_circle';
+                    icon.classList.add('text-primary');
+                    item.style.opacity = '0.5';
+                } else if (icon && icon.innerText === 'check_circle') {
+                    icon.innerText = 'circle';
+                    icon.classList.remove('text-primary');
+                    item.style.opacity = '1';
+                }
+            });
+        });
+    </script>
+</body></html>

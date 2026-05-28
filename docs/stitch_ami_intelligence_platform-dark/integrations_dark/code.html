@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MeetIQ - Integrations Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c0c1ff",
+                        "inverse-surface": "#dae2fd",
+                        "primary": "#c0c1ff",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "surface-tint": "#c0c1ff",
+                        "surface-variant": "#2d3449",
+                        "surface-bright": "#31394d",
+                        "surface-container": "#171f33",
+                        "on-secondary-container": "#00374d",
+                        "on-error": "#690005",
+                        "on-secondary": "#00354a",
+                        "on-primary": "#1000a9",
+                        "on-tertiary-fixed-variant": "#92002a",
+                        "on-surface-variant": "#c7c4d7",
+                        "surface-container-highest": "#2d3449",
+                        "error": "#ffb4ab",
+                        "on-surface": "#dae2fd",
+                        "tertiary-fixed": "#ffdadb",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "primary-container": "#8083ff",
+                        "secondary": "#7bd0ff",
+                        "on-secondary-fixed": "#001e2c",
+                        "on-primary-fixed": "#07006c",
+                        "surface-container-low": "#131b2e",
+                        "surface": "#0b1326",
+                        "inverse-primary": "#494bd6",
+                        "on-primary-container": "#0d0096",
+                        "on-tertiary": "#67001b",
+                        "tertiary-container": "#ff516a",
+                        "error-container": "#93000a",
+                        "tertiary": "#ffb2b7",
+                        "outline-variant": "#464554",
+                        "surface-dim": "#0b1326",
+                        "surface-container-high": "#222a3d",
+                        "surface-container-lowest": "#060e20",
+                        "outline": "#908fa0",
+                        "secondary-fixed": "#c4e7ff",
+                        "background": "#0b1326",
+                        "on-background": "#dae2fd",
+                        "secondary-container": "#00a6e0",
+                        "on-tertiary-container": "#5b0017",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "on-tertiary-fixed": "#40000d",
+                        "inverse-on-surface": "#283044",
+                        "primary-fixed": "#e1e0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "code": ["jetbrainsMono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "code": ["13px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0b1326; color: #dae2fd; }
+        .integration-card { background-color: #1e293b; border: 1px solid #334155; transition: transform 0.2s, border-color 0.2s; }
+        .integration-card:hover { border-color: #6366F1; transform: translateY(-2px); }
+        .status-ready { background: rgba(16, 185, 129, 0.1); color: #10B981; }
+        .status-not-configured { background: rgba(245, 158, 11, 0.1); color: #F59E0B; }
+        .btn-primary { background-color: #6366F1; color: white; transition: background-color 0.2s; }
+        .btn-primary:hover { background-color: #4f46e5; }
+        .btn-secondary { border: 1px solid #334155; color: #f9fafb; transition: background-color 0.2s; }
+        .btn-secondary:hover { background-color: #334155; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-md h-16 bg-surface dark:bg-surface border-b border-surface-variant dark:border-surface-variant">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-primary hover:bg-surface-container-highest transition-colors p-2 rounded-full">menu</button>
+<h1 class="font-headline-sm-mobile text-headline-sm-mobile font-bold text-on-surface dark:text-on-surface">MeetIQ</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-primary dark:text-primary hover:bg-surface-container-highest transition-colors p-2 rounded-full">notifications</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs">AR</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-24 pb-28 px-md md:px-lg max-w-7xl mx-auto min-h-screen">
+<!-- Header Section -->
+<div class="mb-xl">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">Integrations Hub</h2>
+<p class="text-on-surface-variant font-body-lg text-body-lg">Power up your workflow by connecting your favorite productivity tools to MeetIQ.</p>
+</div>
+<!-- Bento Grid Layout for Integrations -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Jira Card -->
+<div class="integration-card p-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 bg-surface-container-high rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">task</span>
+</div>
+<span class="status-ready px-3 py-1 rounded-full font-label-md text-label-md uppercase">Connected</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Jira</h3>
+<p class="text-on-surface-variant mb-lg">Sync action items directly to your Jira backlogs and track meeting progress in real-time.</p>
+</div>
+<button class="btn-secondary w-full py-2 rounded-lg font-label-md text-label-md">Configure</button>
+</div>
+<!-- Linear Card -->
+<div class="integration-card p-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 bg-surface-container-high rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">account_tree</span>
+</div>
+<span class="status-not-configured px-3 py-1 rounded-full font-label-md text-label-md uppercase">Not configured</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Linear</h3>
+<p class="text-on-surface-variant mb-lg">A streamlined integration for modern software teams. Auto-create issues from meeting insights.</p>
+</div>
+<button class="btn-primary w-full py-2 rounded-lg font-label-md text-label-md">Configure</button>
+</div>
+<!-- Slack Card -->
+<div class="integration-card p-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 bg-surface-container-high rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">forum</span>
+</div>
+<span class="status-ready px-3 py-1 rounded-full font-label-md text-label-md uppercase">Connected</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Slack</h3>
+<p class="text-on-surface-variant mb-lg">Send automated meeting summaries and key highlights directly to dedicated project channels.</p>
+</div>
+<button class="btn-secondary w-full py-2 rounded-lg font-label-md text-label-md">Configure</button>
+</div>
+<!-- Trello Card -->
+<div class="integration-card p-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 bg-surface-container-high rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">dashboard_customize</span>
+</div>
+<span class="status-not-configured px-3 py-1 rounded-full font-label-md text-label-md uppercase">Not configured</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Trello</h3>
+<p class="text-on-surface-variant mb-lg">Keep your boards updated. Map meeting action items to cards on any board or list.</p>
+</div>
+<button class="btn-primary w-full py-2 rounded-lg font-label-md text-label-md">Configure</button>
+</div>
+<!-- Email Card -->
+<div class="integration-card p-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 bg-surface-container-high rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">mail</span>
+</div>
+<span class="status-ready px-3 py-1 rounded-full font-label-md text-label-md uppercase">Connected</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Email</h3>
+<p class="text-on-surface-variant mb-lg">Automated follow-ups and summary distributions sent to all participants immediately after calls.</p>
+</div>
+<button class="btn-secondary w-full py-2 rounded-lg font-label-md text-label-md">Configure</button>
+</div>
+<!-- Custom Webhook Placeholder (Asymmetric Bento Element) -->
+<div class="integration-card p-lg rounded-xl border-dashed border-2 flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-outline text-4xl">add</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Request Tool</h3>
+<p class="text-on-surface-variant mb-lg max-w-xs">Don't see your favorite tool? We're constantly adding new integrations to the hub.</p>
+<button class="text-primary font-label-md text-label-md hover:underline">Submit Request</button>
+</div>
+</div>
+<!-- Featured Section -->
+<section class="mt-xl grid grid-cols-1 lg:grid-cols-2 gap-lg bg-surface-container-low p-lg rounded-xl border border-surface-variant">
+<div class="flex flex-col justify-center">
+<span class="text-primary font-label-md text-label-md uppercase mb-sm">Pro Feature</span>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">Advanced Workflow Automation</h2>
+<p class="text-on-surface-variant mb-lg">Connect multiple tools in a single chain. For example, when a meeting ends, send a summary to Slack and create tasks in Jira automatically using our advanced automation engine.</p>
+<div class="flex gap-md">
+<button class="btn-primary px-lg py-2 rounded-lg font-label-md text-label-md">Explore Automations</button>
+<button class="btn-secondary px-lg py-2 rounded-lg font-label-md text-label-md">View Documentation</button>
+</div>
+</div>
+<div class="relative min-h-[240px] rounded-lg overflow-hidden border border-surface-variant">
+<img alt="Automation Flow Visualization" class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="A highly detailed and complex data visualization showing interconnected nodes and neural pathways in a dark mode digital environment. Glowing lines of indigo and light blue light connect various software icons, representing seamless technical integrations. The style is ultra-modern, high-tech, and minimal, with a soft cinematic glow reflecting off a dark glass-like surface. The lighting is focused and precise, emphasizing the interconnectedness of a sophisticated software ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7uWUQRUM8xzh2EzwSZtERoOMuN-U38UTut32DJ1Kvnrhct81azK9e_JhRc_hFpLwP39azRtwHo86GdkFo9f6n-tZ3SSYF7nap_hAfCIHhnzt-U7gOJaKbtCNm3NGX6GZIICTRXD0Nph-7ywLy5GitLEw3wtpcUPn6zFYvqIcL5aYl1A5XXUrMNCyCWdA38vS68Ni0RHfTsYwGwccxplaIeojx5nFURfxWGXlait_qdiOhmZFMUpH8Y9npKGtA3VwPAHevHrH5qpw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-sm pb-safe bg-surface-container dark:bg-surface-container border-t border-surface-variant dark:border-surface-variant rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md">Meetings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-label-md text-label-md">Live</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary-container text-on-secondary-container dark:text-on-secondary-container rounded-full px-4 py-1 scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">extension</span>
+<span class="font-label-md text-label-md">Integrations</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('mousedown', () => {
+                elem.style.transform = 'scale(0.95)';
+            });
+            elem.addEventListener('mouseup', () => {
+                elem.style.transform = '';
+            });
+            elem.addEventListener('mouseleave', () => {
+                elem.style.transform = '';
+            });
+        });
+
+        // Simple visibility observer for scroll effects
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.integration-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+            observer.observe(card);
+        });
+    </script>
+</body></html>

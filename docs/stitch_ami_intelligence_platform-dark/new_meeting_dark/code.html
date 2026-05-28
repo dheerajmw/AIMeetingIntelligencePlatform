@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MeetIQ - New Meeting Upload</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c0c1ff",
+                    "inverse-surface": "#dae2fd",
+                    "primary": "#c0c1ff",
+                    "secondary-fixed-dim": "#7bd0ff",
+                    "surface-tint": "#c0c1ff",
+                    "surface-variant": "#2d3449",
+                    "surface-bright": "#31394d",
+                    "surface-container": "#171f33",
+                    "on-secondary-container": "#00374d",
+                    "on-error": "#690005",
+                    "on-secondary": "#00354a",
+                    "on-primary": "#1000a9",
+                    "on-tertiary-fixed-variant": "#92002a",
+                    "on-surface-variant": "#c7c4d7",
+                    "surface-container-highest": "#2d3449",
+                    "error": "#ffb4ab",
+                    "on-surface": "#dae2fd",
+                    "tertiary-fixed": "#ffdadb",
+                    "on-secondary-fixed-variant": "#004c69",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "primary-container": "#8083ff",
+                    "secondary": "#7bd0ff",
+                    "on-secondary-fixed": "#001e2c",
+                    "on-primary-fixed": "#07006c",
+                    "surface-container-low": "#131b2e",
+                    "surface": "#0b1326",
+                    "inverse-primary": "#494bd6",
+                    "on-primary-container": "#0d0096",
+                    "on-tertiary": "#67001b",
+                    "tertiary-container": "#ff516a",
+                    "error-container": "#93000a",
+                    "tertiary": "#ffb2b7",
+                    "outline-variant": "#464554",
+                    "surface-dim": "#0b1326",
+                    "surface-container-high": "#222a3d",
+                    "surface-container-lowest": "#060e20",
+                    "outline": "#908fa0",
+                    "secondary-fixed": "#c4e7ff",
+                    "background": "#0b1326",
+                    "on-background": "#dae2fd",
+                    "secondary-container": "#00a6e0",
+                    "on-tertiary-container": "#5b0017",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#ffb2b7",
+                    "on-tertiary-fixed": "#40000d",
+                    "inverse-on-surface": "#283044",
+                    "primary-fixed": "#e1e0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "margin": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "code": ["jetbrainsMono"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "code": ["13px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326; /* Design System Surface */
+            color: #dae2fd; /* Design System On-Surface */
+            font-family: 'Inter', sans-serif;
+        }
+        .upload-dashed {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%23334155' stroke-width='3' stroke-dasharray='10%2c 10' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+            border-radius: 12px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pipeline-active {
+            box-shadow: 0 0 15px rgba(192, 193, 255, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-md h-16 bg-surface border-b border-surface-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container-highest transition-colors p-2 rounded-lg">menu</span>
+<span class="font-headline-sm font-bold text-on-surface">MeetIQ</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-highest transition-colors p-2 rounded-lg cursor-pointer">notifications</span>
+<div class="h-8 w-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-label-md">AR</div>
+</div>
+</header>
+<!-- NavigationDrawer Shell (Web View) -->
+<aside class="hidden md:flex fixed inset-y-0 left-0 z-[60] w-80 flex-col p-md gap-sm bg-surface-container-low border-r border-surface-variant mt-16">
+<div class="flex items-center gap-md p-md mb-md">
+<div class="h-12 w-12 rounded-full bg-surface-variant overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-z_gWgRoKjb4CYLJ8k8AVfMCQaPk3GexmaV4KPNe17nXDPkr7G3zk-LAFb8d2qOhtFQQGIZ89KIjfwN288hInLN03Qzz4vd3rEeTb_EOc5rZQWM0-BZpPB0a2qkfuqVFRPBpGTeoYIaACLyZcGVc-UJ_OHJItpQXd1D4XedQ0_RfBGE-GwGuZKB9hn8Itg6LDZDkv51rGwDP-ymFhYcuLVjhOBnjbkap6LC2OHEqFLBvwx5bBvK526nchYV0LhIN8G-oqnJXVOQM"/>
+</div>
+<div>
+<p class="font-headline-sm-mobile font-semibold text-on-surface">Alex Rivers</p>
+<p class="font-body-md text-on-surface-variant">Pro Plan</p>
+</div>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md">Personal Space</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md">Team Analytics</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">video_library</span>
+<span class="font-body-md">Recordings Library</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-body-md">Shared Insights</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md">Help Center</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-24 md:pl-80 px-md md:px-xl">
+<div class="max-w-6xl mx-auto space-y-lg">
+<!-- Page Header -->
+<div class="flex flex-col gap-xs">
+<h1 class="font-headline-lg text-on-surface">New Meeting Upload</h1>
+<p class="font-body-md text-on-surface-variant">Process your recorded conversations with high-accuracy transcription and AI insights.</p>
+</div>
+<!-- Pipeline Visualizer -->
+<div class="grid grid-cols-4 gap-md">
+<div class="flex flex-col gap-sm">
+<div class="h-1 w-full bg-primary rounded-full"></div>
+<div class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md">UPLOADED</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="h-1 w-full bg-primary-container rounded-full relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-1/2 animate-pulse"></div>
+</div>
+<div class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+<span class="font-label-md">TRANSCRIBING</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm opacity-40">
+<div class="h-1 w-full bg-surface-variant rounded-full"></div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+<span class="font-label-md">ANALYZING</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm opacity-40">
+<div class="h-1 w-full bg-surface-variant rounded-full"></div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="font-label-md">READY</span>
+</div>
+</div>
+</div>
+<!-- Main Interactive Area: Bento Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left: Form & Upload -->
+<div class="lg:col-span-8 space-y-lg">
+<!-- Upload Zone -->
+<div class="upload-dashed h-64 flex flex-col items-center justify-center gap-md cursor-pointer hover:bg-surface-container transition-all group border-2 border-transparent">
+<div class="h-16 w-16 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">upload_file</span>
+</div>
+<div class="text-center">
+<p class="font-headline-sm text-on-surface">Drop recording here</p>
+<p class="font-body-md text-on-surface-variant">Supports MP4, MP3, WAV up to 2GB</p>
+</div>
+<button class="px-lg py-sm bg-surface-variant text-on-surface font-label-md rounded-lg hover:bg-outline-variant transition-colors">
+                            Browse Files
+                        </button>
+</div>
+<!-- Metadata Form -->
+<div class="bg-surface-container rounded-xl p-lg border border-surface-variant space-y-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant">MEETING TITLE</label>
+<input class="bg-surface border border-surface-variant text-on-surface rounded-lg px-md py-sm focus:outline-none focus:border-primary transition-colors font-body-md" placeholder="Weekly Product Sync" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant">DATE &amp; TIME</label>
+<input class="bg-surface border border-surface-variant text-on-surface rounded-lg px-md py-sm focus:outline-none focus:border-primary transition-colors font-body-md" type="datetime-local"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md items-end">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant">TIMEZONE</label>
+<select class="bg-surface border border-surface-variant text-on-surface rounded-lg px-md py-sm focus:outline-none focus:border-primary transition-colors font-body-md">
+<option>GMT-07:00 (Pacific Time)</option>
+<option>GMT+00:00 (London)</option>
+<option>GMT+05:30 (Mumbai)</option>
+</select>
+</div>
+<div class="flex items-center justify-between p-sm px-md bg-surface border border-surface-variant rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-md text-on-surface">Enable Speaker Labeling</span>
+<span class="text-[10px] text-on-surface-variant">Auto-detect separate voices</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="flex justify-end pt-md">
+<button class="bg-[#6366F1] hover:bg-indigo-500 text-white font-headline-sm px-xl py-md rounded-lg flex items-center gap-md transition-all active:scale-95 shadow-lg shadow-indigo-500/20">
+<span>Upload &amp; Process</span>
+<span class="material-symbols-outlined">rocket_launch</span>
+</button>
+</div>
+</div>
+<!-- Right: Information Cards -->
+<div class="lg:col-span-4 space-y-lg">
+<!-- Auto-Summary Card -->
+<div class="bg-surface-container rounded-xl p-lg border border-surface-variant overflow-hidden relative">
+<div class="absolute top-0 right-0 p-lg opacity-10">
+<span class="material-symbols-outlined text-[80px]">auto_awesome</span>
+</div>
+<h3 class="font-headline-sm text-primary mb-md">AI Auto-Summary</h3>
+<p class="font-body-md text-on-surface-variant mb-md">Our advanced models will automatically generate key takeaways, action items, and a sentiment overview for this recording.</p>
+<ul class="space-y-sm">
+<li class="flex items-center gap-sm text-label-md text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">check_small</span>
+                                Smart Task Extraction
+                            </li>
+<li class="flex items-center gap-sm text-label-md text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">check_small</span>
+                                Follow-up Email Drafts
+                            </li>
+<li class="flex items-center gap-sm text-label-md text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">check_small</span>
+                                Topic Clustering
+                            </li>
+</ul>
+</div>
+<!-- Best Practices Card -->
+<div class="bg-surface-container-low rounded-xl p-lg border border-surface-variant">
+<h3 class="font-label-md text-on-surface-variant uppercase tracking-widest mb-md">Best Practices</h3>
+<div class="space-y-md">
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-secondary-container">mic</span>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Clear Audio</p>
+<p class="font-label-md text-on-surface-variant">Use recordings with minimal background noise for 99% accuracy.</p>
+</div>
+</div>
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-secondary-container">groups</span>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Label Speakers</p>
+<p class="font-label-md text-on-surface-variant">Identifying participants early helps the AI build better relationship maps.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Analytics Insight (Mini card) -->
+<div class="bg-gradient-to-br from-surface-container to-surface-variant p-md rounded-xl border border-surface-variant">
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label-md text-on-surface-variant">MONTHLY QUOTA</p>
+<p class="font-headline-sm text-on-surface">12.5 / 20 hrs</p>
+</div>
+<div class="h-12 w-12 rounded-full border-4 border-primary border-t-surface-variant animate-[spin_3s_linear_infinite]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<footer class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-sm pb-safe bg-surface-container border-t border-surface-variant rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+<span class="font-label-md">New</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+</footer>
+<script>
+        // Simple micro-interaction for the upload zone
+        const dropZone = document.querySelector('.upload-dashed');
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('bg-surface-container-highest');
+        });
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('bg-surface-container-highest');
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('bg-surface-container-highest');
+            alert('File received! Starting upload sequence...');
+        });
+    </script>
+</body></html>

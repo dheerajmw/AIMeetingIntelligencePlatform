@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Meeting Detail - Q3 Budget Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-secondary-container": "#5c647a",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "outline": "#767586",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#494bd6",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "primary-fixed": "#e1e0ff",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "secondary": "#565e74",
+                        "surface": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#464554",
+                        "primary-container": "#6063ee",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#131b2e",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "primary": "#4648d4",
+                        "outline-variant": "#c7c4d7",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#dae2fd",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "inverse-primary": "#c0c1ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#07006c",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-container": "#dae2fd",
+                        "tertiary": "#904900",
+                        "on-primary-container": "#fffbff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#b55d00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "margin-desktop": "32px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "metadata": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "caption": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "metadata": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                        "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-20 md:pb-0">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">MeetIQ</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-low transition-colors rounded-full cursor-pointer">notifications</span>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container text-xs font-bold">JD</div>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile md:px-margin-desktop max-w-5xl mx-auto mb-24">
+<!-- Meeting Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div class="space-y-1">
+<div class="flex items-center gap-3">
+<h2 class="font-display text-display text-on-surface">Q3 Budget Review</h2>
+<span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-metadata text-caption flex items-center gap-1 border border-emerald-100">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                        Ready
+                    </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_today</span> Oct 05, 2023 • 45 min
+                </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-xl font-metadata text-body-sm text-on-surface hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-md">share</span>
+                    Share
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary rounded-xl font-metadata text-body-sm hover:opacity-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-md">download</span>
+                    Export
+                </button>
+</div>
+</div>
+<!-- Tabs Navigation -->
+<nav class="flex border-b border-outline-variant mb-8 overflow-x-auto no-scrollbar">
+<a class="px-6 py-3 border-b-2 border-primary text-primary font-metadata text-body-sm whitespace-nowrap" href="#">Summary</a>
+<a class="px-6 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-primary font-metadata text-body-sm transition-colors whitespace-nowrap" href="#">Transcript</a>
+<a class="px-6 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-primary font-metadata text-body-sm transition-colors whitespace-nowrap" href="#">Actions &amp; Decisions</a>
+<a class="px-6 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-primary font-metadata text-body-sm transition-colors whitespace-nowrap" href="#">Integrations</a>
+</nav>
+<!-- Content Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Executive Summary (Hero Block) -->
+<section class="md:col-span-8 p-6 bg-surface-container-lowest border border-outline-variant rounded-xl">
+<div class="flex items-center gap-2 mb-4 text-primary">
+<span class="material-symbols-outlined">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md">Executive Summary</h3>
+</div>
+<div class="font-body-md text-body-md text-on-surface leading-relaxed space-y-4">
+<p>The Q3 Budget Review focused on optimizing departmental allocations to meet aggressive year-end growth targets. A central theme was the pivot from legacy maintenance costs towards innovative R&amp;D initiatives.</p>
+<p>The committee evaluated the current spending velocity and approved a strategic $50,000 reallocation to the AI infrastructure project. This decision was predicated on the early ROI observed in the pilot phase. All other departmental budgets remain within the 5% variance threshold established in Q2.</p>
+</div>
+</section>
+<!-- Key Discussion Points -->
+<section class="md:col-span-4 p-6 bg-surface-container-lowest border border-outline-variant rounded-xl flex flex-col">
+<h3 class="font-headline-md text-headline-md mb-4">Discussion Points</h3>
+<ul class="space-y-4 flex-1">
+<li class="flex gap-3 group">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:scale-125 transition-transform"></span>
+<p class="font-body-sm text-body-sm text-on-surface">Analysis of the $12k overage in marketing cloud services.</p>
+</li>
+<li class="flex gap-3 group">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:scale-125 transition-transform"></span>
+<p class="font-body-sm text-body-sm text-on-surface">Feasibility of accelerating the data migration timeline.</p>
+</li>
+<li class="flex gap-3 group">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:scale-125 transition-transform"></span>
+<p class="font-body-sm text-body-sm text-on-surface">Resource constraints within the DevOps squad for Q4.</p>
+</li>
+</ul>
+<div class="mt-6 pt-4 border-t border-outline-variant">
+<img class="w-full h-32 object-cover rounded-lg" data-alt="A clean, professional data visualization dashboard displayed on a modern tablet screen. The interface shows minimalist line charts and bar graphs in shades of indigo and slate. The background is a bright, high-key office environment with soft natural light, conveying a sense of corporate intelligence and clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBAYx7Hyea--aoeyI08F8y8L4g-qKBPsiskEPLolrlRZVwM57QRUDjm5PKU05orSTl0wiEBDgfY_Hb9EA6OecXU91pZ6G_hS38k_3JqSYk0n9Dyn2YgIEfQcL6EiuR7dwhbFCeKXc1Q4rIgjXOYbmVjQk8P0Tgd0B5QhG5V5clpFSHVAnUQ5gpf6qqJET52_eXvHY9bgHi_3E1LSnHk3bKB8adI1uoY74sR0XZEyCLcGlgWMMSb-8q9Sl-QeawxepGgen3gZGLdKM"/>
+</div>
+</section>
+<!-- Decisions Made -->
+<section class="md:col-span-6 space-y-4">
+<div class="flex items-center gap-2 px-2">
+<span class="material-symbols-outlined text-primary">gavel</span>
+<h3 class="font-headline-md text-headline-md">Decisions Made</h3>
+</div>
+<div class="p-6 bg-surface-container-lowest border border-outline-variant rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-emerald-500"></div>
+<div class="flex justify-between items-start mb-3">
+<h4 class="font-headline-md text-headline-md text-on-surface">Approved $50k for R&amp;D</h4>
+<span class="font-metadata text-caption text-on-surface-variant bg-surface-container px-2 py-1 rounded">14:20</span>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg border-l-4 border-outline-variant italic font-body-sm text-on-surface-variant">
+                        "The team agreed to the additional allocation for AI infrastructure, noting that the Q2 pilot exceeded all performance benchmarks."
+                    </div>
+</div>
+</section>
+<!-- Action Items -->
+<section class="md:col-span-6 space-y-4">
+<div class="flex items-center gap-2 px-2">
+<span class="material-symbols-outlined text-primary">checklist</span>
+<h3 class="font-headline-md text-headline-md">Action Items</h3>
+</div>
+<div class="p-6 bg-surface-container-lowest border border-outline-variant rounded-xl relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex items-start gap-4">
+<div class="mt-1 w-6 h-6 border-2 border-outline rounded flex items-center justify-center cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-transparent text-sm hover:text-outline-variant">check</span>
+</div>
+<div class="flex-1 space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Update budget spreadsheet</h4>
+<div class="flex items-center gap-3 mt-1">
+<div class="flex items-center gap-1">
+<div class="w-5 h-5 rounded-full bg-secondary-container flex items-center justify-center text-[10px] font-bold">S</div>
+<span class="font-metadata text-caption">Sarah</span>
+</div>
+<span class="text-on-surface-variant">•</span>
+<span class="font-metadata text-caption text-error">Due Oct 12</span>
+</div>
+</div>
+<span class="font-metadata text-caption text-on-surface-variant bg-surface-container px-2 py-1 rounded">18:05</span>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg border-l-4 border-outline-variant italic font-body-sm text-on-surface-variant">
+                                "Sarah will update the sheet by Friday to reflect the new R&amp;D allocation and share it with the board."
+                            </div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar Component (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 pb-safe bg-surface border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-caption text-caption">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-medium" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event_note</span>
+<span class="font-caption text-caption">Meetings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-caption text-caption">Live</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">extension</span>
+<span class="font-caption text-caption">Integrations</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-caption text-caption">Settings</span>
+</a>
+</nav>
+<!-- FAB (Suppressed based on context: Details Page) -->
+<script>
+        // Tab switching micro-interaction
+        document.querySelectorAll('nav a').forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('nav a').forEach(t => {
+                    t.classList.remove('border-primary', 'text-primary');
+                    t.classList.add('border-transparent', 'text-on-surface-variant');
+                });
+                tab.classList.remove('border-transparent', 'text-on-surface-variant');
+                tab.classList.add('border-primary', 'text-primary');
+            });
+        });
+
+        // Checkbox interaction
+        const checkbox = document.querySelector('.border-2.border-outline');
+        checkbox.addEventListener('click', () => {
+            const icon = checkbox.querySelector('.material-symbols-outlined');
+            checkbox.classList.toggle('bg-primary');
+            checkbox.classList.toggle('border-primary');
+            icon.classList.toggle('text-transparent');
+            icon.classList.toggle('text-on-primary');
+            if (checkbox.classList.contains('bg-primary')) {
+                icon.style.fontVariationSettings = "'FILL' 1";
+            } else {
+                icon.style.fontVariationSettings = "'FILL' 0";
+            }
+        });
+    </script>
+</body></html>

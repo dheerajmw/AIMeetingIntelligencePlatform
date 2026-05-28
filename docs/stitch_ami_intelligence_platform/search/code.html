@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global Search | MeetIQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-secondary-container": "#5c647a",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "outline": "#767586",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#494bd6",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "primary-fixed": "#e1e0ff",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "secondary": "#565e74",
+                        "surface": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#464554",
+                        "primary-container": "#6063ee",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#131b2e",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "primary": "#4648d4",
+                        "outline-variant": "#c7c4d7",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#dae2fd",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "inverse-primary": "#c0c1ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#07006c",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-container": "#dae2fd",
+                        "tertiary": "#904900",
+                        "on-primary-container": "#fffbff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#b55d00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "margin-desktop": "32px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "metadata": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "caption": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "metadata": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                        "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            user-select: none;
+        }
+        .search-glow:focus-within {
+            box-shadow: 0 0 0 2px #c0c1ff;
+        }
+        .bento-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+        }
+        body {
+            background-color: #f8f9ff;
+            color: #0b1c30;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md min-h-screen pb-20 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="menu">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">MeetIQ</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile" data-alt="A professional high-resolution headshot of a diverse corporate executive in a minimalist studio. The lighting is soft and flattering, emphasizing a clean and organized aesthetic. The background is a muted slate blue that aligns with the corporate intelligence platform's primary color palette. The overall image conveys trust, efficiency, and intelligence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALAdd31tPyQvQplMLtmkzZ7PeCYzAoPug5TuOUAfxcUwcTWP-TehOm1vONb8LsspN0_Xqqx99ebcU0TuidRKu9FCr-BCz6FgG3teOHgqcXrRVX7KoroibwfN4O7n3Jahqgd5_KyHwkFyZv-xYQPm3yJ2LkHEyegbx66Kb_BlVHwTfa5LXJsJ-aETjNmCxXUvyel4J_c0Mblp55STh58b_jfR4NvM0oFHIOv2anX-ZqnmTGo9zmJkTwMT8Xi3NG6V8wdEZ1SBMhc68"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-16 px-margin-mobile max-w-5xl mx-auto">
+<!-- Large Search Header Section -->
+<section class="mb-10 text-center md:text-left">
+<h2 class="font-display text-display mb-6">Search Knowledge</h2>
+<div class="relative w-full max-w-3xl search-glow bg-white border border-outline-variant rounded-xl flex items-center p-2 group">
+<span class="material-symbols-outlined px-3 text-outline group-focus-within:text-primary" data-icon="search">search</span>
+<input autocomplete="off" class="flex-1 border-none focus:ring-0 font-body-md py-3 text-on-surface bg-transparent" id="main-search" placeholder="Search budgets, launch dates, action owners..." type="text"/>
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-lg border border-outline-variant/30">
+<button class="px-3 py-1.5 text-caption font-medium bg-primary text-on-primary rounded-md shadow-sm transition-all" id="toggle-keyword">Keyword</button>
+<button class="px-3 py-1.5 text-caption font-medium text-on-surface-variant hover:bg-surface-container-high rounded-md transition-all" id="toggle-semantic">Semantic</button>
+</div>
+</div>
+</section>
+<!-- Bento Grid Results / History Container -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6" id="search-content">
+<!-- Recent Searches & Suggestions (Visible when input is empty) -->
+<div class="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-6" id="initial-state">
+<!-- Recent History Card -->
+<div class="md:col-span-4 bg-white border border-outline-variant rounded-xl p-6 bento-card">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="history">history</span>
+                            Recent
+                        </h3>
+<button class="text-caption text-primary hover:underline">Clear</button>
+</div>
+<ul class="space-y-3">
+<li class="flex items-center justify-between text-body-sm text-on-surface group cursor-pointer hover:text-primary">
+<span>Q4 Product Roadmap</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100" data-icon="arrow_outward">arrow_outward</span>
+</li>
+<li class="flex items-center justify-between text-body-sm text-on-surface group cursor-pointer hover:text-primary">
+<span>Marketing budget 2024</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100" data-icon="arrow_outward">arrow_outward</span>
+</li>
+<li class="flex items-center justify-between text-body-sm text-on-surface group cursor-pointer hover:text-primary">
+<span>Design system tokens</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100" data-icon="arrow_outward">arrow_outward</span>
+</li>
+</ul>
+</div>
+<!-- Suggestions Card -->
+<div class="md:col-span-8 bg-white border border-outline-variant rounded-xl p-6 bento-card overflow-hidden relative">
+<h3 class="font-headline-md text-on-surface mb-4">Quick Insights</h3>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant hover:border-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-primary mb-2 block" data-icon="monetization_on">monetization_on</span>
+<p class="font-metadata text-primary">Budgets</p>
+<p class="text-caption text-on-surface-variant">Analyze spending trends</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant hover:border-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-tertiary mb-2 block" data-icon="rocket_launch">rocket_launch</span>
+<p class="font-metadata text-tertiary">Launches</p>
+<p class="text-caption text-on-surface-variant">Check go-to-market dates</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant hover:border-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-secondary mb-2 block" data-icon="person_search">person_search</span>
+<p class="font-metadata text-secondary">Owners</p>
+<p class="text-caption text-on-surface-variant">Find action item DRI</p>
+</div>
+</div>
+<!-- Ambient Graphic element -->
+<div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[200px]" data-icon="lightbulb">lightbulb</span>
+</div>
+</div>
+</div>
+<!-- Active Results Container (Initially Hidden) -->
+<div class="hidden md:col-span-12 space-y-4" id="results-state">
+<div class="flex justify-between items-center px-2">
+<p class="text-caption text-on-surface-variant"><span class="font-semibold text-primary">3 results</span> found for "budget"</p>
+<button class="flex items-center gap-1 text-caption text-on-surface-variant border border-outline-variant px-3 py-1 rounded-full hover:bg-white">
+<span class="material-symbols-outlined text-xs" data-icon="filter_list">filter_list</span> Filters
+                    </button>
+</div>
+<!-- Result Item 1 -->
+<div class="bg-white border border-outline-variant rounded-xl p-5 hover:border-primary-fixed-dim transition-all group">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+</div>
+<div>
+<h4 class="font-headline-md text-on-surface group-hover:text-primary transition-colors">Q1 Strategic Financial Planning</h4>
+<p class="text-caption text-on-surface-variant">Mar 12, 2024 • Project Nexus</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1 bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded text-xs font-bold border border-emerald-100">
+<span class="material-symbols-outlined text-xs" data-icon="verified" data-weight="fill">verified</span>
+                                98% Relevance
+                            </div>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30 text-body-sm text-on-surface-variant">
+                        "...based on the current burn rate, we need to adjust the <mark class="bg-primary-container/20 text-on-primary-fixed-variant px-1 rounded">marketing budget</mark> by 15% before the April launch window to ensure coverage for experimental channels..."
+                    </div>
+</div>
+<!-- Result Item 2 -->
+<div class="bg-white border border-outline-variant rounded-xl p-5 hover:border-primary-fixed-dim transition-all group">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-tertiary-container/10 rounded-lg flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="record_voice_over">record_voice_over</span>
+</div>
+<div>
+<h4 class="font-headline-md text-on-surface group-hover:text-primary transition-colors">Weekly Leadership Sync</h4>
+<p class="text-caption text-on-surface-variant">Feb 28, 2024 • Management</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1 bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded text-xs font-bold border border-outline-variant/30">
+                                85% Relevance
+                            </div>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30 text-body-sm text-on-surface-variant">
+                        "Sarah confirmed that the remaining <mark class="bg-primary-container/20 text-on-primary-fixed-variant px-1 rounded">budget</mark> will be allocated to hiring two senior engineers for the platform team..."
+                    </div>
+</div>
+<!-- Result Item 3 -->
+<div class="bg-white border border-outline-variant rounded-xl p-5 hover:border-primary-fixed-dim transition-all group">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-secondary-container/10 rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<div>
+<h4 class="font-headline-md text-on-surface group-hover:text-primary transition-colors">Vendor Contract Review</h4>
+<p class="text-caption text-on-surface-variant">Feb 15, 2024 • Operations</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1 bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded text-xs font-bold border border-outline-variant/30">
+                                72% Relevance
+                            </div>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30 text-body-sm text-on-surface-variant">
+                        "...the annual licensing fee is $45k, which fits within the departmental <mark class="bg-primary-container/20 text-on-primary-fixed-variant px-1 rounded">budget</mark> as long as we consolidate seat counts."
+                    </div>
+</div>
+</div>
+<!-- No Results State (Hidden) -->
+<div class="hidden md:col-span-12 py-20 text-center flex flex-col items-center" id="empty-state">
+<div class="w-24 h-24 bg-surface-container rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-outline text-4xl" data-icon="search_off">search_off</span>
+</div>
+<h3 class="font-headline-lg text-on-surface mb-2">No matching intelligence found</h3>
+<p class="text-body-md text-on-surface-variant max-w-md mx-auto mb-8">We couldn't find anything matching your query. Try searching for broader terms or switching to Semantic mode.</p>
+<div class="flex flex-wrap justify-center gap-3">
+<button class="px-4 py-2 bg-surface border border-outline-variant rounded-full text-caption font-medium hover:bg-surface-container-low">"Q4 Revenue"</button>
+<button class="px-4 py-2 bg-surface border border-outline-variant rounded-full text-caption font-medium hover:bg-surface-container-low">"Action items Sarah"</button>
+<button class="px-4 py-2 bg-surface border border-outline-variant rounded-full text-caption font-medium hover:bg-surface-container-low">"Hiring updates"</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 pb-safe bg-surface border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-caption text-caption">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="font-caption text-caption">Meetings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-medium active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-caption text-caption">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="extension">extension</span>
+<span class="font-caption text-caption">Integrations</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-caption text-caption">Settings</span>
+</a>
+</nav>
+<script>
+        const searchInput = document.getElementById('main-search');
+        const initialState = document.getElementById('initial-state');
+        const resultsState = document.getElementById('results-state');
+        const emptyState = document.getElementById('empty-state');
+        const toggleKeyword = document.getElementById('toggle-keyword');
+        const toggleSemantic = document.getElementById('toggle-semantic');
+
+        searchInput.addEventListener('input', (e) => {
+            const value = e.target.value.toLowerCase();
+            
+            if (value === "") {
+                initialState.classList.remove('hidden');
+                resultsState.classList.add('hidden');
+                emptyState.classList.add('hidden');
+            } else if (value === "budget") {
+                initialState.classList.add('hidden');
+                resultsState.classList.remove('hidden');
+                emptyState.classList.add('hidden');
+            } else if (value.length > 5) {
+                initialState.classList.add('hidden');
+                resultsState.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+            }
+        });
+
+        const setToggle = (active, inactive) => {
+            active.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+            active.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high');
+            inactive.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+            inactive.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high');
+        };
+
+        toggleKeyword.addEventListener('click', () => setToggle(toggleKeyword, toggleSemantic));
+        toggleSemantic.addEventListener('click', () => setToggle(toggleSemantic, toggleKeyword));
+    </script>
+</body></html>

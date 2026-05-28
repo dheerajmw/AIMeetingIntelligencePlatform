@@ -1,0 +1,40 @@
+{
+  "samples": [
+    {
+      "id": "ami-en2002a-60s",
+      "dataset": "AMI Meeting Corpus",
+      "title": "AMI — EN2002a (60s clip)",
+      "description": "Academic design meeting excerpt. Headset mix, 16 kHz mono WAV. Good first test (~1 min, low Groq usage).",
+      "filename": "ami-en2002a-60s.wav",
+      "duration_s": 60,
+      "language": "English",
+      "meeting_start": "2005-02-08T10:00:00+00:00",
+      "timezone": "Europe/London",
+      "source_url": "https://groups.inf.ed.ac.uk/ami/corpus/"
+    },
+    {
+      "id": "ami-en2002a-100s",
+      "dataset": "AMI Meeting Corpus",
+      "title": "AMI — EN2002a (~100s clip)",
+      "description": "Longer excerpt from the same AMI meeting. Tests chunking and rolling updates with more speech.",
+      "filename": "EN2002a.Mix-Headset.partial.wav",
+      "duration_s": 100,
+      "language": "English",
+      "meeting_start": "2005-02-08T10:00:00+00:00",
+      "timezone": "Europe/London",
+      "source_url": "https://groups.inf.ed.ac.uk/ami/corpus/"
+    },
+    {
+      "id": "icsi-bed-60s",
+      "dataset": "ICSI Meeting Corpus",
+      "title": "ICSI — Bed meeting (60s clip)",
+      "description": "60s academic-meeting excerpt for multi-speaker pipeline testing. Replace with official ICSI headset mix from the corpus when available.",
+      "filename": "icsi-bed-60s.wav",
+      "duration_s": 60,
+      "language": "English",
+      "meeting_start": "2000-01-01T10:00:00-08:00",
+      "timezone": "America/Los_Angeles",
+      "source_url": "https://groups.inf.ed.ac.uk/ami/icsi/"
+    }
+  ]
+}

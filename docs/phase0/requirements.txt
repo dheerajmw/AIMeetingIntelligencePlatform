@@ -1,0 +1,4 @@
+openai-whisper==20240930
+groq==0.4.1
+pydantic==2.13.4
+python-dotenv==1.0.0

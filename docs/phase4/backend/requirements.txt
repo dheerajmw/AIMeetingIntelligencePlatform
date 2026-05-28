@@ -1,0 +1,20 @@
+fastapi==0.115.6
+uvicorn[standard]==0.30.6
+python-multipart==0.0.20
+pydantic==2.13.4
+sqlalchemy==2.0.36
+alembic==1.14.0
+python-dotenv==1.0.0
+
+redis==5.2.0
+rq==2.0.0
+
+groq>=1.0.0
+openai-whisper==20240930
+
+# Torch/Whisper wheels currently expect NumPy 1.x on many setups.
+numpy==1.26.4
+
+# Enables WAV transcription without requiring ffmpeg.
+soundfile==0.12.1
+httpx==0.28.1

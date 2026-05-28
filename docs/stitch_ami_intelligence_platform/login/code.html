@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | MeetIQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#c0c1ff",
+                      "on-secondary-container": "#5c647a",
+                      "on-tertiary-fixed": "#301400",
+                      "surface-variant": "#d3e4fe",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "outline": "#767586",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#494bd6",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "surface-bright": "#f8f9ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#0b1c30",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "primary-fixed": "#e1e0ff",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "secondary": "#565e74",
+                      "surface": "#f8f9ff",
+                      "surface-container": "#e5eeff",
+                      "background": "#f8f9ff",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#464554",
+                      "primary-container": "#6063ee",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed": "#131b2e",
+                      "tertiary-fixed": "#ffdcc5",
+                      "on-surface": "#0b1c30",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "primary": "#4648d4",
+                      "outline-variant": "#c7c4d7",
+                      "surface-dim": "#cbdbf5",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#dae2fd",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#213145",
+                      "inverse-primary": "#c0c1ff",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#07006c",
+                      "surface-container-low": "#eff4ff",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-tertiary-container": "#fffbff",
+                      "secondary-container": "#dae2fd",
+                      "tertiary": "#904900",
+                      "on-primary-container": "#fffbff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "tertiary-container": "#b55d00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "base": "4px",
+                      "margin-desktop": "32px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "lg": "24px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "metadata": ["Inter"],
+                      "display": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "caption": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "metadata": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                      "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .form-input-focus:focus {
+            outline: none;
+            border-color: #4648d4;
+            box-shadow: 0 0 0 2px #e1e0ff;
+        }
+        .bento-bg {
+            background-image: radial-gradient(#c7c4d7 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen flex items-center justify-center p-margin-mobile md:p-margin-desktop overflow-x-hidden relative">
+<!-- Atmospheric Background Decoration -->
+<div class="fixed inset-0 bento-bg opacity-20 pointer-events-none"></div>
+<div class="fixed top-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary-container/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="fixed bottom-[-10%] left-[-10%] w-[30%] h-[30%] bg-tertiary-container/5 rounded-full blur-[100px] pointer-events-none"></div>
+<main class="w-full max-w-[440px] z-10">
+<!-- Logo/Brand Anchor -->
+<div class="flex flex-col items-center mb-lg">
+<div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-md shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-on-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface text-center">MeetIQ</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Precision insights for high-performance teams</p>
+</div>
+<!-- Login Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg md:p-xl shadow-sm">
+<!-- Error State Banner -->
+<div class="mb-lg p-md bg-error-container border border-error/20 rounded-lg flex items-center gap-sm animate-in fade-in slide-in-from-top-2 duration-300" id="error-banner">
+<span class="material-symbols-outlined text-error text-[20px]">error</span>
+<p class="font-metadata text-on-error-container">Invalid credentials. Please check your details and try again.</p>
+</div>
+<div class="space-y-lg">
+<!-- SSO Primary Action -->
+<button class="w-full h-12 bg-primary hover:bg-primary-container text-on-primary font-body-md text-body-md rounded-lg flex items-center justify-center gap-sm transition-all duration-200 active:scale-[0.98] shadow-sm">
+<img alt="SSO Provider" class="w-5 h-5 invert brightness-0" data-alt="A clean, professional logo of a global technology single sign-on provider. The icon is rendered in a minimalist white on the deep indigo button background, symbolizing secure enterprise authentication. The aesthetic is high-tech and corporate, fitting for a modern business software application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJIQI4OE8ZnGGa6XhOcSldbPMnflBIwODUaKykPeJD4KZaoXOK1lE9oby6SLlAedSGNHruH8k8G86FcOBVEeKTQ_5LdWPF98n3OBcS5GyV7MZQ7hjS0pd8bPYTAMfdmoq9ow_dILPwfZJhvUYdM04B7miL3f79wpPyaTu1k5GYXtk4pBMgy3Qb0Eq5dxcKv9_4UO_7koHI3NaJhsDeBwIyBUMQlWb9liSQDHGfXm4afRYbrk5ZDr_vDG5FnSNOuuxJPdud0IdrEbY"/>
+<span>Sign in with SSO</span>
+</button>
+<!-- Divider -->
+<div class="relative flex items-center py-sm">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-md font-caption text-caption text-outline uppercase tracking-widest">or</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Manual Form -->
+<form class="space-y-md" onsubmit="return false;">
+<div class="space-y-xs">
+<label class="font-metadata text-metadata text-on-surface-variant block ml-1" for="workspace">Workspace Slug</label>
+<div class="relative">
+<input class="w-full h-11 px-md bg-surface border border-outline-variant rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline/50 form-input-focus transition-all" id="workspace" placeholder="acme-corp" type="text"/>
+<div class="absolute right-md top-1/2 -translate-y-1/2 font-metadata text-caption text-outline">.meetiq.ai</div>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-metadata text-metadata text-on-surface-variant block ml-1" for="email">Email Address</label>
+<input class="w-full h-11 px-md bg-surface border border-outline-variant rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline/50 form-input-focus transition-all" id="email" placeholder="name@company.com" type="email"/>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between items-center px-1">
+<label class="font-metadata text-metadata text-on-surface-variant" for="password">Password</label>
+<a class="font-metadata text-caption text-primary hover:underline" href="#">Forgot?</a>
+</div>
+<div class="relative">
+<input class="w-full h-11 px-md bg-surface border border-outline-variant rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline/50 form-input-focus transition-all" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant/60 hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full h-11 mt-md border border-outline-variant hover:bg-surface-container-low text-on-surface font-metadata text-body-sm rounded-lg transition-all duration-200 active:scale-[0.98]" type="submit">
+                        Continue with Email
+                    </button>
+</form>
+</div>
+</div>
+<!-- Footer Links -->
+<footer class="mt-xl flex flex-col items-center gap-sm">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Don't have an account? <a class="text-primary font-medium hover:underline" href="#">Request Access</a>
+</p>
+<div class="flex gap-md mt-sm">
+<a class="font-caption text-caption text-outline hover:text-on-surface-variant transition-colors" href="#">Privacy Policy</a>
+<a class="font-caption text-caption text-outline hover:text-on-surface-variant transition-colors" href="#">Terms of Service</a>
+</div>
+</footer>
+</main>
+<!-- Side Illustration (Desktop Only) -->
+<div class="hidden lg:block fixed left-12 bottom-12 max-w-[280px]">
+<div class="bg-surface-container-low/50 backdrop-blur-md border border-outline-variant/30 rounded-xl p-md">
+<div class="flex items-center gap-sm mb-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-[18px]">auto_awesome</span>
+</div>
+<div class="h-2 w-24 bg-outline-variant rounded-full"></div>
+</div>
+<div class="space-y-xs">
+<div class="h-2 w-full bg-outline-variant/40 rounded-full"></div>
+<div class="h-2 w-4/5 bg-outline-variant/40 rounded-full"></div>
+<div class="h-2 w-3/4 bg-outline-variant/40 rounded-full"></div>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-md italic">"Transcribing and analyzing your quarterly review in real-time..."</p>
+</div>
+</div>
+<script>
+        // Micro-interactions
+        const form = document.querySelector('form');
+        const errorBanner = document.getElementById('error-banner');
+        
+        // Simple error toggle for demonstration purposes
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                errorBanner.classList.add('hidden');
+            }
+        });
+
+        // Focus ring visual polish
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+</body></html>

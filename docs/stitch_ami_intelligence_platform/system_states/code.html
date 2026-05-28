@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MeetIQ - System States</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c0c1ff",
+                    "on-secondary-container": "#5c647a",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-variant": "#d3e4fe",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "outline": "#767586",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#494bd6",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "primary-fixed": "#e1e0ff",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "secondary": "#565e74",
+                    "surface": "#f8f9ff",
+                    "surface-container": "#e5eeff",
+                    "background": "#f8f9ff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#464554",
+                    "primary-container": "#6063ee",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#131b2e",
+                    "tertiary-fixed": "#ffdcc5",
+                    "on-surface": "#0b1c30",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "primary": "#4648d4",
+                    "outline-variant": "#c7c4d7",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#dae2fd",
+                    "inverse-surface": "#213145",
+                    "inverse-primary": "#c0c1ff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#07006c",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-tertiary-container": "#fffbff",
+                    "secondary-container": "#dae2fd",
+                    "tertiary": "#904900",
+                    "on-primary-container": "#fffbff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-container": "#b55d00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "margin-desktop": "32px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "metadata": ["Inter"],
+                    "display": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "caption": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "metadata": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                    "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-20 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant transition-colors duration-200 ease-in-out">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">MeetIQ</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">notifications</button>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto space-y-lg">
+<!-- Section Header -->
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">System Health &amp; States</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Monitoring real-time service availability and operational constraints.</p>
+</div>
+<!-- Bento Grid for States -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- 1. Failed Transcription (Red Alert Box) -->
+<div class="md:col-span-12 bg-white border border-outline-variant p-md rounded-xl shadow-sm">
+<div class="flex items-start gap-md bg-error-container/20 border border-error/20 p-md rounded-lg">
+<span class="material-symbols-outlined text-error text-[28px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">error</span>
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md text-on-error-container">Transcription Failed</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">We encountered a critical error while processing the audio stream for "Q4 Product Strategy Sync". No data was lost, but the process has halted.</p>
+<div class="flex gap-md mt-md">
+<button class="bg-primary text-on-primary px-lg py-sm rounded-xl font-body-sm hover:opacity-90 transition-opacity">Retry Processing</button>
+<button class="border border-outline-variant text-on-surface-variant px-lg py-sm rounded-xl font-body-sm hover:bg-surface-container-low transition-colors">Contact Support</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. Failed Analysis (Partial Transcript View) -->
+<div class="md:col-span-8 bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="bg-surface-container p-md border-b border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-error">analytics</span>
+<span class="font-headline-md text-headline-md text-error">Analysis Failed</span>
+</div>
+<span class="text-caption font-caption text-on-surface-variant px-sm py-xs bg-white rounded-lg border border-outline-variant">ID: #MTG-9920</span>
+</div>
+<div class="p-md space-y-md flex-1">
+<div class="space-y-sm opacity-50 select-none">
+<div class="flex gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest shrink-0"></div>
+<div class="space-y-xs w-full">
+<div class="h-4 bg-surface-container-highest rounded w-1/4"></div>
+<div class="h-4 bg-surface-container-highest rounded w-full"></div>
+<div class="h-4 bg-surface-container-highest rounded w-5/6"></div>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest shrink-0"></div>
+<div class="space-y-xs w-full">
+<div class="h-4 bg-surface-container-highest rounded w-1/4"></div>
+<div class="h-4 bg-surface-container-highest rounded w-4/5"></div>
+</div>
+</div>
+</div>
+<!-- Error Overlay -->
+<div class="text-center py-xl">
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mx-auto">The semantic engine could not generate insights for this meeting due to low confidence scores in the source transcript.</p>
+<button class="mt-md text-primary font-body-sm flex items-center justify-center gap-xs mx-auto hover:underline">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                            Re-run Analysis Engine
+                        </button>
+</div>
+</div>
+</div>
+<!-- 3. Quota Exceeded (Amber Banner) -->
+<div class="md:col-span-4 bg-white border border-outline-variant rounded-xl p-md shadow-sm relative overflow-hidden flex flex-col">
+<div class="absolute top-0 left-0 w-full h-1 bg-tertiary"></div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-tertiary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="font-headline-md text-headline-md text-tertiary">Usage Alert</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-xl">You've reached your monthly limit of 2,000 processed minutes. Upgrade your plan to continue using MeetIQ.</p>
+<div class="mt-auto">
+<div class="w-full bg-surface-container rounded-full h-2 mb-sm">
+<div class="bg-tertiary h-2 rounded-full w-full"></div>
+</div>
+<div class="flex justify-between text-caption font-caption text-on-surface-variant mb-md">
+<span>2,000 / 2,000 mins</span>
+<span>100%</span>
+</div>
+<button class="w-full bg-tertiary-container text-on-tertiary-container py-md rounded-xl font-body-sm hover:opacity-90 transition-opacity">Upgrade Workspace</button>
+</div>
+</div>
+<!-- 4. 403 Unauthorized (Full Width in Grid context) -->
+<div class="md:col-span-12 lg:col-span-6 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden h-64 flex flex-col items-center justify-center text-center p-xl relative">
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="A dark, sophisticated background with subtle geometric patterns and abstract security shield silhouettes. The lighting is low and cinematic, emphasizing a sense of restricted access and professional encryption. The overall tone is cool and serious, using deep blues and grays to signify high-level enterprise security protocols." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDsKIz-Ff-8Fo0v8r_qTnMi88C3tKMDg7RAWlTuYLqI0QceKm7Wg_GbcVJjkZMEqKC1f4hJswTmnM1V1D7qdNz0PTPMQI02EG4eEI9cHHZjaJ7wHp29La7cCKhjY1eZtll1OYYiAzVrggVeQFa-DADsrkqyRKEiOmCmLYI6r3GIIeOtOL4WGqrDCewU5rCkfXdshjqeJWGkmTUsQb7_KndoHOb0m4WMrt53vpGRMFSyF0wCj9e8ylLW7xAIsdzBv8ZsAauyZQ1f2M"/>
+</div>
+<span class="material-symbols-outlined text-primary text-5xl mb-md">lock</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Access Denied</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-sm">You do not have the required permissions to view the sensitive intelligence for this workspace.</p>
+<button class="mt-md text-primary font-body-sm hover:underline">Request Access from Admin</button>
+</div>
+<!-- 5. 404 Not Found -->
+<div class="md:col-span-12 lg:col-span-6 bg-white border border-outline-variant rounded-xl shadow-sm h-64 flex flex-col items-center justify-center text-center p-xl">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-outline text-4xl">search_off</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Meeting not found</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-sm">The meeting you're looking for might have been deleted or the link is expired.</p>
+<button class="mt-md border border-outline-variant text-on-surface-variant px-lg py-sm rounded-xl font-body-sm hover:bg-surface-container-low transition-colors">Return to Dashboard</button>
+</div>
+</div>
+<!-- Footer Spacer -->
+<div class="h-12"></div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 pb-safe bg-surface border-t border-outline-variant md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-caption text-caption hover:bg-surface-container-low active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-caption text-caption hover:bg-surface-container-low active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span>Meetings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-caption text-caption hover:bg-surface-container-low active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span>Live</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-caption text-caption hover:bg-surface-container-low active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">extension</span>
+<span>Integrations</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-medium text-caption hover:bg-surface-container-low active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<script>
+        // Simple interaction for showing hover states or simulating state transitions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const originalContent = this.innerHTML;
+                if (this.innerText.includes('Retry') || this.innerText.includes('Re-run')) {
+                    this.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span>';
+                    setTimeout(() => {
+                        this.innerHTML = originalContent;
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body></html>
