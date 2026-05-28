@@ -32,14 +32,15 @@ Built on Phase 4 with security, governance, and cost controls:
 
 ---
 
-## Deploy backend
+## Deploy
 
-| Platform | Guide |
-|----------|--------|
-| **Railway** | [backend/DEPLOY_RAILWAY.md](./backend/DEPLOY_RAILWAY.md) — root `railway.toml` |
-| **Render** | [backend/DEPLOY_RENDER.md](./backend/DEPLOY_RENDER.md) — root `render.yaml` |
+| Part | Platform | Guide |
+|------|----------|--------|
+| **Frontend** | Vercel (free) | [frontend/DEPLOY_VERCEL.md](./frontend/DEPLOY_VERCEL.md) — root `vercel.json` |
+| **Backend** | Railway | [backend/DEPLOY_RAILWAY.md](./backend/DEPLOY_RAILWAY.md) — `railway.toml` |
+| **Backend** | Render | [backend/DEPLOY_RENDER.md](./backend/DEPLOY_RENDER.md) — `render.yaml` |
 
-Both use the same `Dockerfile` and environment variables (`GROQ_API_KEY`, `CORS_ORIGINS`, volume paths, etc.).
+Set `VITE_API_BASE` on Vercel to your backend URL, and `CORS_ORIGINS` on the API to your `*.vercel.app` domain.
 
 ---
 
