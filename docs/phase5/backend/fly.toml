@@ -1,0 +1,46 @@
+# MeetIQ Phase 5 API — Fly.io
+# Deploy: cd docs/phase5/backend && fly deploy
+# Docs: DEPLOY_FLY.md
+
+app = 'meetiq-api'
+primary_region = 'bom'
+
+[build]
+  dockerfile = 'Dockerfile'
+
+[env]
+  PORT = '8002'
+  WHISPER_MODEL = 'tiny'
+  STORAGE_ROOT = '/var/data/storage'
+  DATABASE_URL = 'sqlite:////var/data/app.db'
+  DEV_AUTH_ENABLED = 'true'
+  AUTH_DISABLED = 'false'
+  INTEGRATIONS_STUB_MODE = 'false'
+
+[[mounts]]
+  source = 'meetiq_data'
+  destination = '/var/data'
+
+[http_service]
+  internal_port = 8002
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    type = 'requests'
+    hard_limit = 25
+    soft_limit = 20
+
+  [[http_service.checks]]
+    interval = '30s'
+    timeout = '10s'
+    grace_period = '120s'
+    method = 'GET'
+    path = '/health'
+
+[[vm]]
+  memory = '2gb'
+  cpu_kind = 'shared'
+  cpus = 2

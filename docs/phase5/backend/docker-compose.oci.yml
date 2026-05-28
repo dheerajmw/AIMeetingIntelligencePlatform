@@ -1,0 +1,27 @@
+# Oracle Cloud / any VPS — MeetIQ API with persistent volume
+# Usage: docker compose -f docker-compose.oci.yml up -d --build
+
+services:
+  meetiq-api:
+    build: .
+    container_name: meetiq-api
+    restart: unless-stopped
+    ports:
+      - "8002:8002"
+    env_file:
+      - .env
+    environment:
+      PORT: "8002"
+      STORAGE_ROOT: /var/data/storage
+      DATABASE_URL: sqlite:////var/data/app.db
+    volumes:
+      - meetiq-data:/var/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8002/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+
+volumes:
+  meetiq-data:

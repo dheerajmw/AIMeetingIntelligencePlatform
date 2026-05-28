@@ -37,6 +37,8 @@ Built on Phase 4 with security, governance, and cost controls:
 | Part | Platform | Guide |
 |------|----------|--------|
 | **Frontend** | Vercel (free) | [frontend/DEPLOY_VERCEL.md](./frontend/DEPLOY_VERCEL.md) — root `vercel.json` |
+| **Backend** | Fly.io | [backend/DEPLOY_FLY.md](./backend/DEPLOY_FLY.md) — `fly.toml` |
+| **Backend** | Oracle Cloud (VM) | [backend/DEPLOY_ORACLE.md](./backend/DEPLOY_ORACLE.md) |
 | **Backend** | Railway | [backend/DEPLOY_RAILWAY.md](./backend/DEPLOY_RAILWAY.md) — `railway.toml` |
 | **Backend** | Render | [backend/DEPLOY_RENDER.md](./backend/DEPLOY_RENDER.md) — `render.yaml` |
 

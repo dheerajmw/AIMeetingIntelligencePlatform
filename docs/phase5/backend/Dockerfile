@@ -1,4 +1,4 @@
-# MeetIQ Phase 5 API — Docker (Render, Railway, local)
+# MeetIQ Phase 5 API — Docker (Fly.io, Render, Railway, local)
 FROM python:3.11-slim-bookworm
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
