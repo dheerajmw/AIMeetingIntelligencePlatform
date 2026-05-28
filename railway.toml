@@ -1,0 +1,14 @@
+# Railway config — repo root (required when deploying from GitHub without a service Root Directory)
+# Docs: https://docs.railway.com/config-as-code/reference
+# MeetIQ API: docs/phase5/backend
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "docs/phase5/backend/Dockerfile"
+watchPatterns = ["docs/phase5/backend/**"]
+
+[deploy]
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5

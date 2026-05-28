@@ -32,9 +32,14 @@ Built on Phase 4 with security, governance, and cost controls:
 
 ---
 
-## Deploy backend (Render)
+## Deploy backend
 
-See **[backend/DEPLOY_RENDER.md](./backend/DEPLOY_RENDER.md)** for Docker, `render.yaml`, env vars, persistent disk, and frontend `VITE_API_BASE`.
+| Platform | Guide |
+|----------|--------|
+| **Railway** | [backend/DEPLOY_RAILWAY.md](./backend/DEPLOY_RAILWAY.md) — root `railway.toml` |
+| **Render** | [backend/DEPLOY_RENDER.md](./backend/DEPLOY_RENDER.md) — root `render.yaml` |
+
+Both use the same `Dockerfile` and environment variables (`GROQ_API_KEY`, `CORS_ORIGINS`, volume paths, etc.).
 
 ---
 

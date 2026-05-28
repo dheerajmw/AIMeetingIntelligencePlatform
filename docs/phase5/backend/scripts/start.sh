@@ -6,9 +6,13 @@ STORAGE="${STORAGE_ROOT:-/app/storage}"
 
 mkdir -p "${STORAGE}/uploads" "${STORAGE}/samples" "${STORAGE}/meetings"
 
-# Render persistent disk (optional): mount at /var/data and set STORAGE_ROOT + DATABASE_URL in the dashboard.
+# Persistent volumes (optional)
+# Render: mount at /var/data — Railway: mount at /data
 if [ -d /var/data ]; then
   mkdir -p /var/data/storage /var/data/storage/uploads
+fi
+if [ -d /data ]; then
+  mkdir -p /data/storage /data/storage/uploads
 fi
 
 DB_DIR="$(dirname "${DATABASE_URL#sqlite:///}")"
