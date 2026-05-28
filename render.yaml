@@ -1,10 +1,11 @@
-# Duplicate of repo-root render.yaml (Render Blueprint only reads /render.yaml at repo root).
-# Use ../../render.yaml when creating a Blueprint from GitHub.
+# Render Blueprint — repository root (required location for Blueprint sync)
+# MeetIQ Phase 5 API lives in docs/phase5/backend
 
 services:
   - type: web
     name: meetiq-api
     runtime: docker
+    rootDir: docs/phase5/backend
     dockerfilePath: ./Dockerfile
     dockerContext: .
     plan: starter
@@ -34,9 +35,3 @@ services:
         value: sqlite:////var/data/app.db
       - key: CORS_ORIGINS
         sync: false
-      # Email (optional — set in Render dashboard)
-      # - key: SMTP_HOST
-      # - key: SMTP_PORT
-      # - key: SMTP_USER
-      # - key: SMTP_PASSWORD
-      # - key: SMTP_FROM

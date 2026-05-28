@@ -56,9 +56,8 @@ Comma-separate multiple origins. Local dev origins (`localhost:5173–5175`) are
 
 1. Push this repo to GitHub.
 2. In Render: **New → Blueprint**.
-3. Connect the repo.
-4. Set **Root Directory** to: `docs/phase5/backend`
-5. Render reads `render.yaml`. Confirm the **meetiq-api** service.
+3. Connect the repo (leave **Root Directory** empty — Blueprint uses the repo root).
+4. Render reads **`render.yaml` at the repository root** (not this folder). Confirm the **meetiq-api** service.
 6. Add secrets in the Blueprint flow or dashboard:
    - `GROQ_API_KEY` (required)
    - `CORS_ORIGINS` (your frontend URL)
