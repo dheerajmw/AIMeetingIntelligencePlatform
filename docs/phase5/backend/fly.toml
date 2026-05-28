@@ -2,7 +2,7 @@
 # Deploy: cd docs/phase5/backend && fly deploy
 # Docs: DEPLOY_FLY.md
 
-app = 'meetiq-api'
+app = 'meetiq-dheerajmw'
 primary_region = 'bom'
 
 [build]
